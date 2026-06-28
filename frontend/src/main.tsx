@@ -313,7 +313,6 @@ function CommunityFooter() {
           <Eye size={22} />
           <span>Visitantes</span>
           <strong>{animatedVisitors.toLocaleString("es-BO")}</strong>
-          <small>contador base desde 1.000</small>
         </div>
         <button
           className={`community-card reaction-card like ${reaction === "like" ? "active" : ""} ${flash === "like" ? "pulse" : ""}`}
