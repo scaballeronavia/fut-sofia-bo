@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Activity, CalendarDays, ChevronDown, Database, Play, ShieldCheck, Sparkles } from "lucide-react";
+import { Activity, CalendarDays, ChevronDown, Database, Eye, Play, ShieldCheck, Sparkles, ThumbsDown, ThumbsUp } from "lucide-react";
 import "./styles.css";
 import { staticMatches, staticPredictions, staticSources } from "./staticData";
 
@@ -198,7 +198,147 @@ function App() {
           </aside>
         </div>
       </section>
+      <CommunityFooter />
     </main>
+  );
+}
+
+
+function readStoredNumber(key: string, fallback: number) {
+  const raw = window.localStorage.getItem(key);
+  if (raw === null) return fallback;
+  const parsed = Number.parseInt(raw, 10);
+  return Number.isFinite(parsed) ? parsed : fallback;
+}
+
+function useAnimatedNumber(value: number) {
+  const [displayValue, setDisplayValue] = React.useState(value);
+
+  React.useEffect(() => {
+    const start = displayValue;
+    const distance = value - start;
+    if (distance === 0) return;
+
+    const startedAt = performance.now();
+    const duration = 720;
+    let frame = 0;
+
+    function tick(now: number) {
+      const progress = Math.min(1, (now - startedAt) / duration);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplayValue(Math.round(start + distance * eased));
+      if (progress < 1) frame = window.requestAnimationFrame(tick);
+    }
+
+    frame = window.requestAnimationFrame(tick);
+    return () => window.cancelAnimationFrame(frame);
+  }, [value]);
+
+  return displayValue;
+}
+
+function CommunityFooter() {
+  const [likes, setLikes] = React.useState(1284);
+  const [dislikes, setDislikes] = React.useState(37);
+  const [visitors, setVisitors] = React.useState(1000);
+  const [reaction, setReaction] = React.useState<"like" | "dislike" | null>(null);
+  const [flash, setFlash] = React.useState<"like" | "dislike" | "visit" | null>(null);
+
+  React.useEffect(() => {
+    const storedReaction = window.localStorage.getItem("sofia-community-reaction") as "like" | "dislike" | null;
+    const nextLikes = readStoredNumber("sofia-community-likes", 1284);
+    const nextDislikes = readStoredNumber("sofia-community-dislikes", 37);
+    let nextVisitors = readStoredNumber("sofia-community-visitors", 1000);
+    const visitKey = `sofia-community-visit-${dateKey(new Date())}`;
+
+    if (!window.localStorage.getItem(visitKey)) {
+      nextVisitors += 1;
+      window.localStorage.setItem(visitKey, "1");
+      window.localStorage.setItem("sofia-community-visitors", String(nextVisitors));
+      setFlash("visit");
+      window.setTimeout(() => setFlash(null), 900);
+    }
+
+    setReaction(storedReaction);
+    setLikes(nextLikes);
+    setDislikes(nextDislikes);
+    setVisitors(nextVisitors);
+  }, []);
+
+  function chooseReaction(nextReaction: "like" | "dislike") {
+    let nextLikes = likes;
+    let nextDislikes = dislikes;
+    let resolvedReaction: "like" | "dislike" | null = nextReaction;
+
+    if (reaction === nextReaction) {
+      resolvedReaction = null;
+      if (nextReaction === "like") nextLikes -= 1;
+      if (nextReaction === "dislike") nextDislikes -= 1;
+    } else {
+      if (nextReaction === "like") nextLikes += 1;
+      if (nextReaction === "dislike") nextDislikes += 1;
+      if (reaction === "like") nextLikes -= 1;
+      if (reaction === "dislike") nextDislikes -= 1;
+    }
+
+    setReaction(resolvedReaction);
+    setLikes(nextLikes);
+    setDislikes(nextDislikes);
+    setFlash(nextReaction);
+    window.setTimeout(() => setFlash(null), 900);
+    window.localStorage.setItem("sofia-community-likes", String(nextLikes));
+    window.localStorage.setItem("sofia-community-dislikes", String(nextDislikes));
+    if (resolvedReaction) {
+      window.localStorage.setItem("sofia-community-reaction", resolvedReaction);
+    } else {
+      window.localStorage.removeItem("sofia-community-reaction");
+    }
+  }
+
+  const animatedVisitors = useAnimatedNumber(visitors);
+  const animatedLikes = useAnimatedNumber(likes);
+  const animatedDislikes = useAnimatedNumber(dislikes);
+  const approval = Math.round((likes / Math.max(1, likes + dislikes)) * 100);
+
+  return (
+    <footer className="community-footer" aria-label="Ranking social de Sof-IA BO">
+      <div className="community-glow" aria-hidden="true" />
+      <div className="community-copy">
+        <p className="eyebrow"><Sparkles size={16} /> Comunidad Sof-IA BO</p>
+        <h2>Ranking en vivo del sistema</h2>
+        <p>Tu reacción ayuda a mejorar el modelo y medir la confianza de la comunidad.</p>
+      </div>
+      <div className="community-stats">
+        <div className={`community-card visitors ${flash === "visit" ? "pulse" : ""}`}>
+          <Eye size={22} />
+          <span>Visitantes</span>
+          <strong>{animatedVisitors.toLocaleString("es-BO")}</strong>
+          <small>contador base desde 1.000</small>
+        </div>
+        <button
+          className={`community-card reaction-card like ${reaction === "like" ? "active" : ""} ${flash === "like" ? "pulse" : ""}`}
+          type="button"
+          onClick={() => chooseReaction("like")}
+          aria-pressed={reaction === "like"}
+        >
+          <ThumbsUp size={22} />
+          <span>Me gusta</span>
+          <strong>{animatedLikes.toLocaleString("es-BO")}</strong>
+          <small>{approval}% aprobación</small>
+        </button>
+        <button
+          className={`community-card reaction-card dislike ${reaction === "dislike" ? "active" : ""} ${flash === "dislike" ? "pulse" : ""}`}
+          type="button"
+          onClick={() => chooseReaction("dislike")}
+          aria-pressed={reaction === "dislike"}
+        >
+          <ThumbsDown size={22} />
+          <span>No me gusta</span>
+          <strong>{animatedDislikes.toLocaleString("es-BO")}</strong>
+          <small>feedback visible</small>
+        </button>
+      </div>
+    </footer>
   );
 }
 
