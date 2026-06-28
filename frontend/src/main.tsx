@@ -77,6 +77,34 @@ type ProgressEvent = {
   result?: PredictionResult;
 };
 
+type CommunityComment = {
+  id: string;
+  name: string;
+  description: string;
+  createdAt: string;
+};
+
+const INITIAL_COMMENTS: CommunityComment[] = [
+  {
+    id: "seed-andrea",
+    name: "Andrea",
+    description: "Santi, qué buena idea capo. La página se ve profesional y el concepto está buenísimo.",
+    createdAt: "2026-06-28T09:20:00-04:00"
+  },
+  {
+    id: "seed-mateo",
+    name: "Mateo",
+    description: "Excelente propuesta para seguir el Mundial con datos. Me gusta que explique cómo llega a la predicción.",
+    createdAt: "2026-06-28T10:45:00-04:00"
+  },
+  {
+    id: "seed-valeria",
+    name: "Valeria",
+    description: "Muy buena idea, Santi. El ranking, las banderas y el análisis le dan mucha confianza a la experiencia.",
+    createdAt: "2026-06-28T12:10:00-04:00"
+  }
+];
+
 function formatDate(value: string) {
   return new Intl.DateTimeFormat("es-BO", {
     dateStyle: "medium",
@@ -337,7 +365,83 @@ function CommunityFooter() {
           <small>feedback visible</small>
         </button>
       </div>
+      <CommunityComments />
     </footer>
+  );
+}
+
+function CommunityComments() {
+  const [comments, setComments] = React.useState<CommunityComment[]>(INITIAL_COMMENTS);
+  const [name, setName] = React.useState("");
+  const [description, setDescription] = React.useState("");
+  const [error, setError] = React.useState("");
+
+  React.useEffect(() => {
+    const saved = window.localStorage.getItem("sofia-community-comments");
+    if (!saved) return;
+    try {
+      const parsed = JSON.parse(saved) as CommunityComment[];
+      if (Array.isArray(parsed)) setComments(parsed);
+    } catch {
+      window.localStorage.removeItem("sofia-community-comments");
+    }
+  }, []);
+
+  function submitComment(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const cleanDescription = description.trim();
+    if (!cleanDescription) {
+      setError("La descripción es requerida.");
+      return;
+    }
+
+    const nextComment: CommunityComment = {
+      id: `comment-${Date.now()}`,
+      name: name.trim() || "Anónimo",
+      description: cleanDescription,
+      createdAt: new Date().toISOString()
+    };
+    const nextComments = [nextComment, ...comments].slice(0, 12);
+    setComments(nextComments);
+    window.localStorage.setItem("sofia-community-comments", JSON.stringify(nextComments));
+    setName("");
+    setDescription("");
+    setError("");
+  }
+
+  return (
+    <section className="comments-panel" aria-label="Comentarios de visitantes">
+      <div className="comments-heading">
+        <div>
+          <p className="eyebrow"><Sparkles size={16} /> Comentarios</p>
+          <h3>Opiniones de la comunidad</h3>
+        </div>
+        <strong>{comments.length}</strong>
+      </div>
+      <form className="comment-form" onSubmit={submitComment}>
+        <label>
+          Nombre opcional
+          <input value={name} onChange={(event) => setName(event.target.value)} placeholder="Tu nombre" />
+        </label>
+        <label>
+          Descripción requerida
+          <textarea value={description} onChange={(event) => setDescription(event.target.value)} placeholder="Escribe tu comentario" required />
+        </label>
+        <button className="comment-submit" type="submit">Publicar comentario</button>
+        {error ? <p className="comment-error">{error}</p> : null}
+      </form>
+      <div className="comment-list">
+        {comments.map((comment) => (
+          <article className="comment-item" key={comment.id}>
+            <div>
+              <strong>{comment.name}</strong>
+              <time>{formatDate(comment.createdAt)}</time>
+            </div>
+            <p>{comment.description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
 
