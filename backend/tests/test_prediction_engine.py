@@ -86,7 +86,7 @@ def test_model_version_is_scouting_calibrated():
     match = get_demo_match("today-rsa-can")
     assert match is not None
     result = simulate_prediction(match, Settings(), seed=42, simulations=3_000)
-    assert result.model_version == "demo-scouting-calibrado-0.3.0"
+    assert result.model_version == "demo-audit-calibrado-0.4.0"
 
 
 def test_future_fixture_is_loaded_from_today_onward():
@@ -136,3 +136,37 @@ def test_knockout_advancement_probabilities_are_valid():
         assert 0 <= result.penalties_probability <= 100
         total_advancement = result.qualification_probability_home + result.qualification_probability_away
         assert abs(total_advancement - 100) <= 0.02
+
+
+def test_postmatch_audit_reduces_yesterday_favorite_bias():
+    settings = Settings(default_simulations=4_000, demo_mode=True)
+
+    germany = get_demo_match("r32-ger-par")
+    assert germany is not None
+    germany_result = simulate_prediction(germany, settings, seed=20260630, simulations=4_000)
+    assert germany_result.probabilities.home_win < 72
+    assert germany_result.most_likely_score in {"1-0", "2-1", "1-1"}
+
+    netherlands = get_demo_match("r32-ned-mar")
+    assert netherlands is not None
+    netherlands_result = simulate_prediction(netherlands, settings, seed=20260630, simulations=4_000)
+    assert netherlands_result.probabilities.home_win < 60
+    assert "Auditoria postpartido" in {factor.name for factor in netherlands_result.factors}
+
+
+def test_penalty_edge_uses_keeper_resilience_and_not_only_elo():
+    from app.services.prediction_engine import penalty_home_edge, scouting
+
+    match = get_demo_match("r32-ger-par")
+    assert match is not None
+    edge = penalty_home_edge(match, scouting(match.home_team.id), scouting(match.away_team.id))
+    assert edge < 0.56
+
+
+def test_today_mexico_ecuador_stays_cautious_after_audit():
+    match = get_demo_match("r32-mex-ecu")
+    assert match is not None
+    result = simulate_prediction(match, Settings(default_simulations=4_000), seed=20260630, simulations=4_000)
+    assert result.primary_outcome == "draw"
+    assert result.probabilities.draw < 45
+    assert abs((result.qualification_probability_home or 0) - (result.qualification_probability_away or 0)) < 8

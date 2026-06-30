@@ -76,17 +76,17 @@ NEUTRAL_SCOUTING = ScoutingProfile(
 
 SCOUTING_PROFILES: dict[str, ScoutingProfile] = {
     "bra": ScoutingProfile(1.96, 0.76, 0.88, 0.84, 0.87, 0.80, 0.80, 0.84, 0.20, 0.22, 0.61, "talento ofensivo superior, volumen de xG alto y laterales profundos"),
-    "jpn": ScoutingProfile(1.44, 0.98, 0.86, 0.86, 0.85, 0.84, 0.70, 0.77, 0.06, 0.30, 0.70, "presion coordinada, movilidad entre lineas y alta disciplina tactica"),
-    "ger": ScoutingProfile(1.78, 0.88, 0.87, 0.82, 0.84, 0.82, 0.79, 0.78, 0.16, 0.28, 0.63, "posesion agresiva, buena llegada de segunda linea y estructura estable"),
-    "par": ScoutingProfile(1.16, 1.04, 0.84, 0.80, 0.79, 0.78, 0.82, 0.76, 0.02, 0.34, 0.74, "bloque competitivo, pelota parada fuerte y partidos de margen corto"),
+    "jpn": ScoutingProfile(1.48, 0.92, 0.86, 0.87, 0.86, 0.85, 0.71, 0.79, 0.07, 0.34, 0.74, "presion coordinada, movilidad entre lineas y alta disciplina tactica"),
+    "ger": ScoutingProfile(1.72, 0.94, 0.86, 0.81, 0.82, 0.81, 0.78, 0.76, 0.12, 0.34, 0.60, "posesion agresiva y buena llegada de segunda linea, con riesgo ante bloque bajo"),
+    "par": ScoutingProfile(1.20, 0.88, 0.85, 0.84, 0.86, 0.80, 0.86, 0.83, 0.07, 0.46, 0.86, "bloque competitivo, pelota parada fuerte, arquero decisivo y partidos de margen corto"),
     "ned": ScoutingProfile(1.68, 0.86, 0.86, 0.84, 0.86, 0.80, 0.76, 0.80, 0.14, 0.27, 0.64, "salida limpia, amplitud ofensiva y control territorial"),
-    "mar": ScoutingProfile(1.34, 0.84, 0.87, 0.86, 0.87, 0.82, 0.76, 0.82, 0.08, 0.36, 0.78, "defensa compacta, transicion peligrosa y experiencia en cruces cerrados"),
+    "mar": ScoutingProfile(1.38, 0.78, 0.88, 0.88, 0.90, 0.84, 0.78, 0.86, 0.12, 0.47, 0.87, "defensa compacta, transicion peligrosa, banco agresivo y experiencia en cruces cerrados"),
     "civ": ScoutingProfile(1.28, 1.14, 0.83, 0.77, 0.76, 0.82, 0.81, 0.73, 0.03, 0.31, 0.72, "potencia fisica, balon parado y ataques directos"),
     "nor": ScoutingProfile(1.58, 1.00, 0.85, 0.80, 0.81, 0.76, 0.77, 0.75, 0.09, 0.26, 0.65, "alto techo de finalizacion, pero dependencia de ritmo ofensivo"),
     "fra": ScoutingProfile(2.02, 0.72, 0.90, 0.86, 0.89, 0.83, 0.83, 0.86, 0.24, 0.20, 0.60, "plantel profundo, transiciones de elite y defensa de area superior"),
-    "swe": ScoutingProfile(1.30, 0.98, 0.85, 0.82, 0.81, 0.78, 0.80, 0.78, 0.04, 0.33, 0.69, "orden defensivo, juego aereo y tendencia a marcadores ajustados"),
+    "swe": ScoutingProfile(1.32, 0.92, 0.86, 0.84, 0.84, 0.79, 0.83, 0.80, 0.06, 0.40, 0.76, "orden defensivo, juego aereo, arquero estable y tendencia a marcadores ajustados"),
     "mex": ScoutingProfile(1.38, 1.02, 0.86, 0.83, 0.82, 0.81, 0.75, 0.77, 0.07, 0.32, 0.71, "localia regional, intensidad alta y empuje en tramos largos"),
-    "ecu": ScoutingProfile(1.36, 0.90, 0.86, 0.84, 0.84, 0.82, 0.74, 0.79, 0.08, 0.34, 0.72, "fortaleza fisica, presion y solidez para sostener ventajas cortas"),
+    "ecu": ScoutingProfile(1.38, 0.84, 0.87, 0.86, 0.86, 0.84, 0.76, 0.81, 0.10, 0.42, 0.79, "fortaleza fisica, presion, bloque compacto y solidez para sostener ventajas cortas"),
     "bel": ScoutingProfile(1.62, 0.92, 0.84, 0.79, 0.81, 0.77, 0.78, 0.78, 0.12, 0.29, 0.63, "calidad tecnica alta, aunque con riesgo si el partido se vuelve fisico"),
     "sen": ScoutingProfile(1.34, 0.90, 0.86, 0.84, 0.84, 0.83, 0.79, 0.80, 0.08, 0.33, 0.76, "bloque fuerte, transiciones rapidas y buena gestion defensiva"),
     "usa": ScoutingProfile(1.44, 1.04, 0.84, 0.80, 0.80, 0.84, 0.73, 0.75, 0.06, 0.31, 0.70, "ritmo alto, localia emocional y presion tras perdida"),
@@ -158,6 +158,88 @@ def upset_correction(match: Match, home: ScoutingProfile, away: ScoutingProfile)
     return clamp(elo_gap_against_home * (resilience_gap * 6.0 + pressure_gap * 2.0 + set_piece_gap * 1.5), 0.0, 5.0)
 
 
+def knockout_resistance(profile: ScoutingProfile) -> float:
+    return (
+        profile.draw_tendency * 0.28
+        + profile.upset_resilience * 0.24
+        + profile.tactical_cohesion * 0.20
+        + profile.keeper_form * 0.16
+        + profile.set_piece_threat * 0.12
+    )
+
+
+def apply_knockout_lambda_resistance(
+    match: Match,
+    home_profile: ScoutingProfile,
+    away_profile: ScoutingProfile,
+    home_lambda: float,
+    away_lambda: float,
+) -> tuple[float, float]:
+    if not match.knockout:
+        return home_lambda, away_lambda
+
+    elo_gap = match.home_team.elo - match.away_team.elo
+    home_resistance = knockout_resistance(home_profile)
+    away_resistance = knockout_resistance(away_profile)
+
+    if elo_gap >= 120 and away_resistance >= 0.76:
+        pressure = clamp((away_resistance - 0.74) * 0.95 + (elo_gap / 900) * 0.04, 0.0, 0.18)
+        home_lambda *= 1 - pressure
+        away_lambda *= 1 + pressure * 0.42
+    elif elo_gap <= -120 and home_resistance >= 0.76:
+        pressure = clamp((home_resistance - 0.74) * 0.95 + (abs(elo_gap) / 900) * 0.04, 0.0, 0.18)
+        away_lambda *= 1 - pressure
+        home_lambda *= 1 + pressure * 0.42
+
+    if home_profile.draw_tendency + away_profile.draw_tendency >= 0.78:
+        avg = (home_lambda + away_lambda) / 2
+        home_lambda = home_lambda * 0.82 + avg * 0.18
+        away_lambda = away_lambda * 0.82 + avg * 0.18
+
+    return home_lambda, away_lambda
+
+
+def penalty_home_edge(match: Match, home_profile: ScoutingProfile, away_profile: ScoutingProfile) -> float:
+    structural = (match.home_team.elo - match.away_team.elo) / 3600
+    keeper = (home_profile.keeper_form - away_profile.keeper_form) * 0.20
+    resilience = (home_profile.upset_resilience - away_profile.upset_resilience) * 0.15
+    cohesion = (home_profile.tactical_cohesion - away_profile.tactical_cohesion) * 0.08
+    set_piece = (home_profile.set_piece_threat - away_profile.set_piece_threat) * 0.05
+    return 0.5 + clamp(structural + keeper + resilience + cohesion + set_piece, -0.18, 0.18)
+
+
+def apply_knockout_probability_resistance(
+    match: Match,
+    raw: dict[str, float],
+    provisional: ProbabilitySet,
+    home_profile: ScoutingProfile,
+    away_profile: ScoutingProfile,
+) -> dict[str, float]:
+    if not match.knockout:
+        return raw
+
+    favorite_gap = abs(provisional.home_win - provisional.away_win)
+    if favorite_gap < 12:
+        return raw
+
+    home_resistance = knockout_resistance(home_profile)
+    away_resistance = knockout_resistance(away_profile)
+    elo_gap = match.home_team.elo - match.away_team.elo
+
+    if provisional.home_win > provisional.away_win and elo_gap >= 100 and away_resistance >= 0.75:
+        shift = clamp((away_resistance - 0.70) * 58 + favorite_gap * 0.065, 2.0, 12.5)
+        raw["home"] -= shift
+        raw["draw"] += shift * 0.70
+        raw["away"] += shift * 0.30
+    elif provisional.away_win > provisional.home_win and elo_gap <= -100 and home_resistance >= 0.75:
+        shift = clamp((home_resistance - 0.70) * 58 + favorite_gap * 0.065, 2.0, 12.5)
+        raw["away"] -= shift
+        raw["draw"] += shift * 0.70
+        raw["home"] += shift * 0.30
+
+    return raw
+
+
 def build_idempotency_key(match: Match, settings: Settings, seed: int, simulations: int) -> str:
     raw = f"{match.id}:{match.data_freshness.cutoff.isoformat()}:{settings.model_version}:{seed}:{simulations}"
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()
@@ -205,6 +287,9 @@ def expected_goals(match: Match) -> tuple[float, float]:
     away_lambda *= max(0.55, 1 - elo_delta * 0.12)
     home_lambda *= scouting_attack_multiplier(home_profile, away_profile)
     away_lambda *= scouting_attack_multiplier(away_profile, home_profile)
+    home_lambda, away_lambda = apply_knockout_lambda_resistance(
+        match, home_profile, away_profile, home_lambda, away_lambda
+    )
 
     if home_profile.draw_tendency + away_profile.draw_tendency > 0.62 and abs(home_lambda - away_lambda) < 0.36:
         avg = (home_lambda + away_lambda) / 2
@@ -290,6 +375,7 @@ def blend_probabilities(match: Match, monte_carlo: ProbabilitySet, prior: Probab
         raw["away"] += reverse_shift * 0.72
         raw["draw"] += reverse_shift * 0.28
 
+    raw = apply_knockout_probability_resistance(match, raw, provisional, home_profile, away_profile)
     return normalize_basis(raw)
 
 
@@ -318,6 +404,7 @@ def make_factors(match: Match, home_xg: float, away_xg: float) -> list[FactorCon
     tactical_gap = scouting_state_value(home_profile, away_profile) * 5
     draw_pressure = ((home_profile.draw_tendency + away_profile.draw_tendency) / 2 - 0.28) * 10
     upset_signal = (home_profile.upset_resilience - away_profile.upset_resilience) * 8
+    audit_gap = (knockout_resistance(home_profile) - knockout_resistance(away_profile)) * 10 if match.knockout else 0
     raw = [
         ("Elo y forma reciente", elo_gap + form_gap, "rating relativo y momento competitivo del dataset local"),
         ("Goles esperados/xG", xg_gap, "lambdas recalibradas con ataque, defensa y scouting reciente"),
@@ -325,6 +412,7 @@ def make_factors(match: Match, home_xg: float, away_xg: float) -> list[FactorCon
         ("Estabilidad tactica", tactical_gap, "cohesion, presion, pelota parada, arquero y comparables historicos"),
         ("Tendencia de empate", draw_pressure, "senal de partidos cerrados cuando ambos perfiles reducen brecha"),
         ("Resiliencia ante favorito", upset_signal, "capacidad del equipo menos favorito para sostener duelos, presion y transiciones"),
+        ("Auditoria postpartido", audit_gap, "aprendizaje del error reciente: favoritos en eliminatoria se penalizan ante bloque bajo, arquero y penales"),
     ]
     factors: list[FactorContribution] = []
     for name, impact, evidence in raw:
@@ -379,7 +467,8 @@ def build_summary(match: Match, result: PredictionResult) -> str:
         f"perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para {match.home_team.name} se pondera "
         f"{home_profile.note}; para {match.away_team.name}, {away_profile.note}. "
         f"Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa "
-        f"y corrige sesgos cuando el favorito no tiene ventaja tactica estable. Markov representa estados del partido como dominio, marcador, "
+        f"y corrige sesgos cuando el favorito no tiene ventaja tactica estable. La auditoria postpartido reduce sobreconfianza "
+        f"cuando aparecen bloque bajo, arquero, pelota parada y escenario de penales. Markov representa estados del partido como dominio, marcador, "
         f"riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. "
         f"El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar "
         f"por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el "
@@ -415,8 +504,8 @@ def simulate_prediction(match: Match, settings: Settings, seed: int | None = Non
                 extra_time += 1
                 if rng.random() < 0.42:
                     penalties += 1
-                penalty_home_edge = 0.5 + max(min((match.home_team.elo - match.away_team.elo) / 2400, 0.12), -0.12)
-                if rng.random() < penalty_home_edge:
+                edge = penalty_home_edge(match, scouting(match.home_team.id), scouting(match.away_team.id))
+                if rng.random() < edge:
                     home_advances += 1
                 else:
                     away_advances += 1
@@ -434,12 +523,13 @@ def simulate_prediction(match: Match, settings: Settings, seed: int | None = Non
     ]
     prediction_id = build_idempotency_key(match, settings, resolved_seed, resolved_simulations)[:16]
     components = [
-        ModelComponent(name="Elo + forma", weight=0.14, status="active", note="Mide diferencia estructural y momento competitivo."),
-        ModelComponent(name="Scouting titulares/xG", weight=0.24, status="active", note="Pondera once probable, disponibilidad, xG, arquero, presion y pelota parada."),
-        ModelComponent(name="Poisson goles", weight=0.22, status="active", note="Convierte ataque/defensa calibrados en goles esperados."),
-        ModelComponent(name="Modelo B bayesiano", weight=0.20, status="active", note="Ajusta incertidumbre, empates y sesgo de favorito con senales tacticas."),
+        ModelComponent(name="Elo + forma", weight=0.12, status="active", note="Mide diferencia estructural y momento competitivo."),
+        ModelComponent(name="Scouting titulares/xG", weight=0.23, status="active", note="Pondera once probable, disponibilidad, xG, arquero, presion y pelota parada."),
+        ModelComponent(name="Poisson goles", weight=0.20, status="active", note="Convierte ataque/defensa calibrados en goles esperados."),
+        ModelComponent(name="Modelo B bayesiano", weight=0.19, status="active", note="Ajusta incertidumbre, empates y sesgo de favorito con senales tacticas."),
         ModelComponent(name="Monte Carlo", weight=0.14, status="active", note="Muestrea escenarios reproducibles con semilla."),
         ModelComponent(name="Markov/Bellman", weight=0.06, status="active", note="Valora estados del partido y escenarios de conservar/remontar."),
+        ModelComponent(name="Auditoria postpartido", weight=0.06, status="active", note="Reduce sobreconfianza del favorito tras errores detectados en eliminatorias."),
     ]
     result = PredictionResult(
         prediction_id=prediction_id,

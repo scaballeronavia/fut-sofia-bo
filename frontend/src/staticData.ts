@@ -785,10 +785,10 @@ export const staticSources: any[] = [
 
 export const staticPredictions: Record<string, any> = {
   "today-rsa-can": {
-    "prediction_id": "7ef8c62a05ad7b48",
+    "prediction_id": "49844fe9cd103627",
     "match_id": "today-rsa-can",
-    "generated_at": "2026-06-28T16:09:18.543773-04:00",
-    "model_version": "demo-scouting-calibrado-0.3.0",
+    "generated_at": "2026-06-30T09:12:00.694996-04:00",
+    "model_version": "demo-audit-calibrado-0.4.0",
     "data_cutoff": "2026-06-28T10:30:00-04:00",
     "seed": 26062026,
     "simulations": 50000,
@@ -838,8 +838,8 @@ export const staticPredictions: Record<string, any> = {
     "confidence": "media",
     "confidence_note": "Estimación competitiva con respaldo metodológico; el margen se mantiene abierto por la variabilidad natural del fútbol.",
     "uncertainty_interval": "+/- 8.05 pp",
-    "qualification_probability_home": 44.67,
-    "qualification_probability_away": 55.33,
+    "qualification_probability_home": 45.9,
+    "qualification_probability_away": 54.1,
     "extra_time_probability": 24.43,
     "penalties_probability": 10.25,
     "factors": [
@@ -878,30 +878,36 @@ export const staticPredictions: Record<string, any> = {
         "impact": 1.12,
         "direction": "home",
         "evidence": "capacidad del equipo menos favorito para sostener duelos, presion y transiciones"
+      },
+      {
+        "name": "Auditoria postpartido",
+        "impact": 0.6,
+        "direction": "home",
+        "evidence": "aprendizaje del error reciente: favoritos en eliminatoria se penalizan ante bloque bajo, arquero y penales"
       }
     ],
     "model_components": [
       {
         "name": "Elo + forma",
-        "weight": 0.14,
+        "weight": 0.12,
         "status": "active",
         "note": "Mide diferencia estructural y momento competitivo."
       },
       {
         "name": "Scouting titulares/xG",
-        "weight": 0.24,
+        "weight": 0.23,
         "status": "active",
         "note": "Pondera once probable, disponibilidad, xG, arquero, presion y pelota parada."
       },
       {
         "name": "Poisson goles",
-        "weight": 0.22,
+        "weight": 0.2,
         "status": "active",
         "note": "Convierte ataque/defensa calibrados en goles esperados."
       },
       {
         "name": "Modelo B bayesiano",
-        "weight": 0.2,
+        "weight": 0.19,
         "status": "active",
         "note": "Ajusta incertidumbre, empates y sesgo de favorito con senales tacticas."
       },
@@ -916,69 +922,75 @@ export const staticPredictions: Record<string, any> = {
         "weight": 0.06,
         "status": "active",
         "note": "Valora estados del partido y escenarios de conservar/remontar."
+      },
+      {
+        "name": "Auditoria postpartido",
+        "weight": 0.06,
+        "status": "active",
+        "note": "Reduce sobreconfianza del favorito tras errores detectados en eliminatorias."
       }
     ],
-    "executive_summary": "Canadá aparece como el escenario mas probable con una probabilidad calibrada demo de 49.08%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Sudáfrica se pondera bloque competitivo, eficiencia reciente, buena respuesta fisica y transiciones directas; para Canadá, mejor techo ofensivo, pero con bajas y menor estabilidad del once probable. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
+    "executive_summary": "Canadá aparece como el escenario mas probable con una probabilidad calibrada demo de 49.08%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Sudáfrica se pondera bloque competitivo, eficiencia reciente, buena respuesta fisica y transiciones directas; para Canadá, mejor techo ofensivo, pero con bajas y menor estabilidad del once probable. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. La auditoria postpartido reduce sobreconfianza cuando aparecen bloque bajo, arquero, pelota parada y escenario de penales. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
     "disclaimer": "Sof-IA BO presenta una estimación probabilística construida con metodología matemática aplicada, modelos estadísticos y simulación computacional. El porcentaje final expresa la frecuencia con la que ese resultado aparece dentro de los escenarios calculados; cuando el valor es alto, indica mayor respaldo del modelo, aunque el fútbol conserva variabilidad natural e incertidumbre competitiva."
   },
   "r32-bra-jpn": {
-    "prediction_id": "8be076c4b8b86ce2",
+    "prediction_id": "94459197d6cc428d",
     "match_id": "r32-bra-jpn",
-    "generated_at": "2026-06-28T16:09:18.598360-04:00",
-    "model_version": "demo-scouting-calibrado-0.3.0",
+    "generated_at": "2026-06-30T09:12:00.753715-04:00",
+    "model_version": "demo-audit-calibrado-0.4.0",
     "data_cutoff": "2026-06-28T10:30:00-04:00",
     "seed": 26062026,
     "simulations": 50000,
     "primary_outcome": "home",
     "probabilities": {
-      "home_win": 77.72,
-      "draw": 12.18,
-      "away_win": 10.1
+      "home_win": 76.8,
+      "draw": 12.66,
+      "away_win": 10.54
     },
     "most_likely_score": "2-0",
     "score_distribution": [
       {
         "score": "2-0",
-        "probability": 10.04
+        "probability": 9.84
       },
       {
         "score": "2-1",
-        "probability": 9.77
+        "probability": 9.82
       },
       {
         "score": "1-0",
-        "probability": 8.42
+        "probability": 8.4
       },
       {
         "score": "1-1",
-        "probability": 8.29
+        "probability": 8.38
       },
       {
         "score": "3-1",
-        "probability": 7.5
+        "probability": 7.38
       },
       {
         "score": "3-0",
-        "probability": 7.4
+        "probability": 7.3
       },
       {
         "score": "2-2",
-        "probability": 4.86
+        "probability": 5.0
       },
       {
-        "score": "4-0",
-        "probability": 4.27
+        "score": "1-2",
+        "probability": 4.33
       }
     ],
-    "expected_goals_home": 2.305,
-    "expected_goals_away": 0.994,
+    "expected_goals_home": 2.285,
+    "expected_goals_away": 1.005,
     "confidence": "media",
     "confidence_note": "Estimación fuerte dentro del modelo: combina xG, scouting, Monte Carlo, Markov, Bellman y Modelo B.",
     "uncertainty_interval": "+/- 8.05 pp",
-    "qualification_probability_home": 77.77,
-    "qualification_probability_away": 22.23,
-    "extra_time_probability": 18.48,
-    "penalties_probability": 7.87,
+    "qualification_probability_home": 76.44,
+    "qualification_probability_away": 23.56,
+    "extra_time_probability": 18.84,
+    "penalties_probability": 8.03,
     "factors": [
       {
         "name": "Elo y forma reciente",
@@ -988,7 +1000,7 @@ export const staticPredictions: Record<string, any> = {
       },
       {
         "name": "Goles esperados/xG",
-        "impact": 7.87,
+        "impact": 7.68,
         "direction": "home",
         "evidence": "lambdas recalibradas con ataque, defensa y scouting reciente"
       },
@@ -1000,45 +1012,51 @@ export const staticPredictions: Record<string, any> = {
       },
       {
         "name": "Estabilidad tactica",
-        "impact": 1.89,
+        "impact": 1.6,
         "direction": "home",
         "evidence": "cohesion, presion, pelota parada, arquero y comparables historicos"
       },
       {
         "name": "Tendencia de empate",
-        "impact": -0.2,
+        "impact": 0.0,
         "direction": "neutral",
         "evidence": "senal de partidos cerrados cuando ambos perfiles reducen brecha"
       },
       {
         "name": "Resiliencia ante favorito",
-        "impact": -0.72,
+        "impact": -1.04,
         "direction": "away",
         "evidence": "capacidad del equipo menos favorito para sostener duelos, presion y transiciones"
+      },
+      {
+        "name": "Auditoria postpartido",
+        "impact": -0.44,
+        "direction": "away",
+        "evidence": "aprendizaje del error reciente: favoritos en eliminatoria se penalizan ante bloque bajo, arquero y penales"
       }
     ],
     "model_components": [
       {
         "name": "Elo + forma",
-        "weight": 0.14,
+        "weight": 0.12,
         "status": "active",
         "note": "Mide diferencia estructural y momento competitivo."
       },
       {
         "name": "Scouting titulares/xG",
-        "weight": 0.24,
+        "weight": 0.23,
         "status": "active",
         "note": "Pondera once probable, disponibilidad, xG, arquero, presion y pelota parada."
       },
       {
         "name": "Poisson goles",
-        "weight": 0.22,
+        "weight": 0.2,
         "status": "active",
         "note": "Convierte ataque/defensa calibrados en goles esperados."
       },
       {
         "name": "Modelo B bayesiano",
-        "weight": 0.2,
+        "weight": 0.19,
         "status": "active",
         "note": "Ajusta incertidumbre, empates y sesgo de favorito con senales tacticas."
       },
@@ -1053,69 +1071,75 @@ export const staticPredictions: Record<string, any> = {
         "weight": 0.06,
         "status": "active",
         "note": "Valora estados del partido y escenarios de conservar/remontar."
+      },
+      {
+        "name": "Auditoria postpartido",
+        "weight": 0.06,
+        "status": "active",
+        "note": "Reduce sobreconfianza del favorito tras errores detectados en eliminatorias."
       }
     ],
-    "executive_summary": "Brasil aparece como el escenario mas probable con una probabilidad calibrada demo de 77.72%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Brasil se pondera talento ofensivo superior, volumen de xG alto y laterales profundos; para Japón, presion coordinada, movilidad entre lineas y alta disciplina tactica. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
+    "executive_summary": "Brasil aparece como el escenario mas probable con una probabilidad calibrada demo de 76.80%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Brasil se pondera talento ofensivo superior, volumen de xG alto y laterales profundos; para Japón, presion coordinada, movilidad entre lineas y alta disciplina tactica. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. La auditoria postpartido reduce sobreconfianza cuando aparecen bloque bajo, arquero, pelota parada y escenario de penales. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
     "disclaimer": "Sof-IA BO presenta una estimación probabilística construida con metodología matemática aplicada, modelos estadísticos y simulación computacional. El porcentaje final expresa la frecuencia con la que ese resultado aparece dentro de los escenarios calculados; cuando el valor es alto, indica mayor respaldo del modelo, aunque el fútbol conserva variabilidad natural e incertidumbre competitiva."
   },
   "r32-ger-par": {
-    "prediction_id": "2bfdb19b8c365eca",
+    "prediction_id": "ea65578da737a922",
     "match_id": "r32-ger-par",
-    "generated_at": "2026-06-28T16:09:18.651981-04:00",
-    "model_version": "demo-scouting-calibrado-0.3.0",
+    "generated_at": "2026-06-30T09:12:00.812871-04:00",
+    "model_version": "demo-audit-calibrado-0.4.0",
     "data_cutoff": "2026-06-28T10:30:00-04:00",
     "seed": 26062026,
     "simulations": 50000,
     "primary_outcome": "home",
     "probabilities": {
-      "home_win": 76.78,
-      "draw": 12.9,
-      "away_win": 10.32
+      "home_win": 68.68,
+      "draw": 16.7,
+      "away_win": 14.62
     },
-    "most_likely_score": "2-0",
+    "most_likely_score": "2-1",
     "score_distribution": [
       {
-        "score": "2-0",
-        "probability": 10.38
-      },
-      {
         "score": "2-1",
-        "probability": 9.98
-      },
-      {
-        "score": "1-0",
-        "probability": 9.23
+        "probability": 9.88
       },
       {
         "score": "1-1",
-        "probability": 8.92
+        "probability": 9.59
       },
       {
-        "score": "3-0",
-        "probability": 7.53
+        "score": "2-0",
+        "probability": 9.14
+      },
+      {
+        "score": "1-0",
+        "probability": 9.09
       },
       {
         "score": "3-1",
-        "probability": 7.11
+        "probability": 6.55
+      },
+      {
+        "score": "3-0",
+        "probability": 6.1
       },
       {
         "score": "2-2",
-        "probability": 4.69
+        "probability": 5.53
       },
       {
-        "score": "0-0",
-        "probability": 4.35
+        "score": "1-2",
+        "probability": 5.39
       }
     ],
-    "expected_goals_home": 2.201,
-    "expected_goals_away": 0.959,
+    "expected_goals_home": 2.009,
+    "expected_goals_away": 1.099,
     "confidence": "media",
     "confidence_note": "Estimación fuerte dentro del modelo: combina xG, scouting, Monte Carlo, Markov, Bellman y Modelo B.",
     "uncertainty_interval": "+/- 8.05 pp",
-    "qualification_probability_home": 76.86,
-    "qualification_probability_away": 23.14,
-    "extra_time_probability": 19.28,
-    "penalties_probability": 8.19,
+    "qualification_probability_home": 69.22,
+    "qualification_probability_away": 30.78,
+    "extra_time_probability": 21.28,
+    "penalties_probability": 9.02,
     "factors": [
       {
         "name": "Elo y forma reciente",
@@ -1125,57 +1149,63 @@ export const staticPredictions: Record<string, any> = {
       },
       {
         "name": "Goles esperados/xG",
-        "impact": 7.45,
+        "impact": 5.46,
         "direction": "home",
         "evidence": "lambdas recalibradas con ataque, defensa y scouting reciente"
       },
       {
         "name": "Titulares disponibles",
-        "impact": 0.36,
-        "direction": "home",
+        "impact": 0.12,
+        "direction": "neutral",
         "evidence": "proxy de disponibilidad y profundidad del once probable"
       },
       {
         "name": "Estabilidad tactica",
-        "impact": 2.14,
+        "impact": 0.79,
         "direction": "home",
         "evidence": "cohesion, presion, pelota parada, arquero y comparables historicos"
       },
       {
         "name": "Tendencia de empate",
-        "impact": 0.3,
+        "impact": 1.2,
         "direction": "neutral",
         "evidence": "senal de partidos cerrados cuando ambos perfiles reducen brecha"
       },
       {
         "name": "Resiliencia ante favorito",
-        "impact": -0.88,
+        "impact": -2.08,
         "direction": "away",
         "evidence": "capacidad del equipo menos favorito para sostener duelos, presion y transiciones"
+      },
+      {
+        "name": "Auditoria postpartido",
+        "impact": -1.25,
+        "direction": "away",
+        "evidence": "aprendizaje del error reciente: favoritos en eliminatoria se penalizan ante bloque bajo, arquero y penales"
       }
     ],
     "model_components": [
       {
         "name": "Elo + forma",
-        "weight": 0.14,
+        "weight": 0.12,
         "status": "active",
         "note": "Mide diferencia estructural y momento competitivo."
       },
       {
         "name": "Scouting titulares/xG",
-        "weight": 0.24,
+        "weight": 0.23,
         "status": "active",
         "note": "Pondera once probable, disponibilidad, xG, arquero, presion y pelota parada."
       },
       {
         "name": "Poisson goles",
-        "weight": 0.22,
+        "weight": 0.2,
         "status": "active",
         "note": "Convierte ataque/defensa calibrados en goles esperados."
       },
       {
         "name": "Modelo B bayesiano",
-        "weight": 0.2,
+        "weight": 0.19,
         "status": "active",
         "note": "Ajusta incertidumbre, empates y sesgo de favorito con senales tacticas."
       },
@@ -1190,69 +1220,75 @@ export const staticPredictions: Record<string, any> = {
         "weight": 0.06,
         "status": "active",
         "note": "Valora estados del partido y escenarios de conservar/remontar."
+      },
+      {
+        "name": "Auditoria postpartido",
+        "weight": 0.06,
+        "status": "active",
+        "note": "Reduce sobreconfianza del favorito tras errores detectados en eliminatorias."
       }
     ],
-    "executive_summary": "Alemania aparece como el escenario mas probable con una probabilidad calibrada demo de 76.78%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Alemania se pondera posesion agresiva, buena llegada de segunda linea y estructura estable; para Paraguay, bloque competitivo, pelota parada fuerte y partidos de margen corto. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
+    "executive_summary": "Alemania aparece como el escenario mas probable con una probabilidad calibrada demo de 68.68%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Alemania se pondera posesion agresiva y buena llegada de segunda linea, con riesgo ante bloque bajo; para Paraguay, bloque competitivo, pelota parada fuerte, arquero decisivo y partidos de margen corto. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. La auditoria postpartido reduce sobreconfianza cuando aparecen bloque bajo, arquero, pelota parada y escenario de penales. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
     "disclaimer": "Sof-IA BO presenta una estimación probabilística construida con metodología matemática aplicada, modelos estadísticos y simulación computacional. El porcentaje final expresa la frecuencia con la que ese resultado aparece dentro de los escenarios calculados; cuando el valor es alto, indica mayor respaldo del modelo, aunque el fútbol conserva variabilidad natural e incertidumbre competitiva."
   },
   "r32-ned-mar": {
-    "prediction_id": "da87178922bc9e77",
+    "prediction_id": "f92d5516a4f29270",
     "match_id": "r32-ned-mar",
-    "generated_at": "2026-06-28T16:09:18.706381-04:00",
-    "model_version": "demo-scouting-calibrado-0.3.0",
+    "generated_at": "2026-06-30T09:12:00.871061-04:00",
+    "model_version": "demo-audit-calibrado-0.4.0",
     "data_cutoff": "2026-06-28T10:30:00-04:00",
     "seed": 26062026,
     "simulations": 50000,
     "primary_outcome": "home",
     "probabilities": {
-      "home_win": 64.84,
-      "draw": 17.67,
-      "away_win": 17.49
+      "home_win": 55.87,
+      "draw": 23.74,
+      "away_win": 20.39
     },
     "most_likely_score": "1-0",
     "score_distribution": [
       {
         "score": "1-1",
-        "probability": 10.47
+        "probability": 10.57
       },
       {
         "score": "1-0",
-        "probability": 10.09
+        "probability": 9.95
       },
       {
         "score": "2-1",
-        "probability": 9.86
+        "probability": 9.88
       },
       {
         "score": "2-0",
-        "probability": 9.25
+        "probability": 8.91
       },
       {
         "score": "0-1",
-        "probability": 5.96
-      },
-      {
-        "score": "3-1",
-        "probability": 5.92
+        "probability": 6.12
       },
       {
         "score": "1-2",
-        "probability": 5.85
+        "probability": 6.06
       },
       {
-        "score": "3-0",
-        "probability": 5.51
+        "score": "3-1",
+        "probability": 5.76
+      },
+      {
+        "score": "0-0",
+        "probability": 5.47
       }
     ],
-    "expected_goals_home": 1.838,
-    "expected_goals_away": 1.08,
+    "expected_goals_home": 1.817,
+    "expected_goals_away": 1.101,
     "confidence": "media",
     "confidence_note": "Estimación competitiva con respaldo metodológico; el margen se mantiene abierto por la variabilidad natural del fútbol.",
     "uncertainty_interval": "+/- 8.05 pp",
-    "qualification_probability_home": 67.9,
-    "qualification_probability_away": 32.1,
-    "extra_time_probability": 22.48,
-    "penalties_probability": 9.43,
+    "qualification_probability_home": 65.47,
+    "qualification_probability_away": 34.53,
+    "extra_time_probability": 22.7,
+    "penalties_probability": 9.52,
     "factors": [
       {
         "name": "Elo y forma reciente",
@@ -1262,57 +1298,63 @@ export const staticPredictions: Record<string, any> = {
       },
       {
         "name": "Goles esperados/xG",
-        "impact": 4.55,
+        "impact": 4.3,
         "direction": "home",
         "evidence": "lambdas recalibradas con ataque, defensa y scouting reciente"
       },
       {
         "name": "Titulares disponibles",
-        "impact": -0.12,
-        "direction": "neutral",
+        "impact": -0.24,
+        "direction": "away",
         "evidence": "proxy de disponibilidad y profundidad del once probable"
       },
       {
         "name": "Estabilidad tactica",
-        "impact": 0.62,
-        "direction": "home",
+        "impact": 0.12,
+        "direction": "neutral",
         "evidence": "cohesion, presion, pelota parada, arquero y comparables historicos"
       },
       {
         "name": "Tendencia de empate",
-        "impact": 0.35,
+        "impact": 0.9,
         "direction": "neutral",
         "evidence": "senal de partidos cerrados cuando ambos perfiles reducen brecha"
       },
       {
         "name": "Resiliencia ante favorito",
-        "impact": -1.12,
+        "impact": -1.84,
         "direction": "away",
         "evidence": "capacidad del equipo menos favorito para sostener duelos, presion y transiciones"
+      },
+      {
+        "name": "Auditoria postpartido",
+        "impact": -1.31,
+        "direction": "away",
+        "evidence": "aprendizaje del error reciente: favoritos en eliminatoria se penalizan ante bloque bajo, arquero y penales"
       }
     ],
     "model_components": [
       {
         "name": "Elo + forma",
-        "weight": 0.14,
+        "weight": 0.12,
         "status": "active",
         "note": "Mide diferencia estructural y momento competitivo."
       },
       {
         "name": "Scouting titulares/xG",
-        "weight": 0.24,
+        "weight": 0.23,
         "status": "active",
         "note": "Pondera once probable, disponibilidad, xG, arquero, presion y pelota parada."
       },
       {
         "name": "Poisson goles",
-        "weight": 0.22,
+        "weight": 0.2,
         "status": "active",
         "note": "Convierte ataque/defensa calibrados en goles esperados."
       },
       {
         "name": "Modelo B bayesiano",
-        "weight": 0.2,
+        "weight": 0.19,
         "status": "active",
         "note": "Ajusta incertidumbre, empates y sesgo de favorito con senales tacticas."
       },
@@ -1327,16 +1369,22 @@ export const staticPredictions: Record<string, any> = {
         "weight": 0.06,
         "status": "active",
         "note": "Valora estados del partido y escenarios de conservar/remontar."
+      },
+      {
+        "name": "Auditoria postpartido",
+        "weight": 0.06,
+        "status": "active",
+        "note": "Reduce sobreconfianza del favorito tras errores detectados en eliminatorias."
       }
     ],
-    "executive_summary": "Países Bajos aparece como el escenario mas probable con una probabilidad calibrada demo de 64.84%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Países Bajos se pondera salida limpia, amplitud ofensiva y control territorial; para Marruecos, defensa compacta, transicion peligrosa y experiencia en cruces cerrados. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
+    "executive_summary": "Países Bajos aparece como el escenario mas probable con una probabilidad calibrada demo de 55.87%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Países Bajos se pondera salida limpia, amplitud ofensiva y control territorial; para Marruecos, defensa compacta, transicion peligrosa, banco agresivo y experiencia en cruces cerrados. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. La auditoria postpartido reduce sobreconfianza cuando aparecen bloque bajo, arquero, pelota parada y escenario de penales. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
     "disclaimer": "Sof-IA BO presenta una estimación probabilística construida con metodología matemática aplicada, modelos estadísticos y simulación computacional. El porcentaje final expresa la frecuencia con la que ese resultado aparece dentro de los escenarios calculados; cuando el valor es alto, indica mayor respaldo del modelo, aunque el fútbol conserva variabilidad natural e incertidumbre competitiva."
   },
   "r32-civ-nor": {
-    "prediction_id": "675fdce41e6d179c",
+    "prediction_id": "1fdd54c4f1c1e286",
     "match_id": "r32-civ-nor",
-    "generated_at": "2026-06-28T16:09:18.760882-04:00",
-    "model_version": "demo-scouting-calibrado-0.3.0",
+    "generated_at": "2026-06-30T09:12:00.930824-04:00",
+    "model_version": "demo-audit-calibrado-0.4.0",
     "data_cutoff": "2026-06-28T10:30:00-04:00",
     "seed": 26062026,
     "simulations": 50000,
@@ -1386,8 +1434,8 @@ export const staticPredictions: Record<string, any> = {
     "confidence": "media",
     "confidence_note": "Estimación competitiva con respaldo metodológico; el margen se mantiene abierto por la variabilidad natural del fútbol.",
     "uncertainty_interval": "+/- 8.05 pp",
-    "qualification_probability_home": 38.23,
-    "qualification_probability_away": 61.77,
+    "qualification_probability_home": 38.94,
+    "qualification_probability_away": 61.06,
     "extra_time_probability": 23.54,
     "penalties_probability": 10.04,
     "factors": [
@@ -1426,30 +1474,36 @@ export const staticPredictions: Record<string, any> = {
         "impact": 0.56,
         "direction": "home",
         "evidence": "capacidad del equipo menos favorito para sostener duelos, presion y transiciones"
+      },
+      {
+        "name": "Auditoria postpartido",
+        "impact": 0.22,
+        "direction": "home",
+        "evidence": "aprendizaje del error reciente: favoritos en eliminatoria se penalizan ante bloque bajo, arquero y penales"
       }
     ],
     "model_components": [
       {
         "name": "Elo + forma",
-        "weight": 0.14,
+        "weight": 0.12,
         "status": "active",
         "note": "Mide diferencia estructural y momento competitivo."
       },
       {
         "name": "Scouting titulares/xG",
-        "weight": 0.24,
+        "weight": 0.23,
         "status": "active",
         "note": "Pondera once probable, disponibilidad, xG, arquero, presion y pelota parada."
       },
       {
         "name": "Poisson goles",
-        "weight": 0.22,
+        "weight": 0.2,
         "status": "active",
         "note": "Convierte ataque/defensa calibrados en goles esperados."
       },
       {
         "name": "Modelo B bayesiano",
-        "weight": 0.2,
+        "weight": 0.19,
         "status": "active",
         "note": "Ajusta incertidumbre, empates y sesgo de favorito con senales tacticas."
       },
@@ -1464,69 +1518,75 @@ export const staticPredictions: Record<string, any> = {
         "weight": 0.06,
         "status": "active",
         "note": "Valora estados del partido y escenarios de conservar/remontar."
+      },
+      {
+        "name": "Auditoria postpartido",
+        "weight": 0.06,
+        "status": "active",
+        "note": "Reduce sobreconfianza del favorito tras errores detectados en eliminatorias."
       }
     ],
-    "executive_summary": "Noruega aparece como el escenario mas probable con una probabilidad calibrada demo de 62.89%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Costa de Marfil se pondera potencia fisica, balon parado y ataques directos; para Noruega, alto techo de finalizacion, pero dependencia de ritmo ofensivo. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
+    "executive_summary": "Noruega aparece como el escenario mas probable con una probabilidad calibrada demo de 62.89%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Costa de Marfil se pondera potencia fisica, balon parado y ataques directos; para Noruega, alto techo de finalizacion, pero dependencia de ritmo ofensivo. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. La auditoria postpartido reduce sobreconfianza cuando aparecen bloque bajo, arquero, pelota parada y escenario de penales. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
     "disclaimer": "Sof-IA BO presenta una estimación probabilística construida con metodología matemática aplicada, modelos estadísticos y simulación computacional. El porcentaje final expresa la frecuencia con la que ese resultado aparece dentro de los escenarios calculados; cuando el valor es alto, indica mayor respaldo del modelo, aunque el fútbol conserva variabilidad natural e incertidumbre competitiva."
   },
   "r32-fra-swe": {
-    "prediction_id": "43c68df6f0bf75fc",
+    "prediction_id": "25d3f7863627a2e0",
     "match_id": "r32-fra-swe",
-    "generated_at": "2026-06-28T16:09:18.814496-04:00",
-    "model_version": "demo-scouting-calibrado-0.3.0",
+    "generated_at": "2026-06-30T09:12:00.988698-04:00",
+    "model_version": "demo-audit-calibrado-0.4.0",
     "data_cutoff": "2026-06-28T10:30:00-04:00",
     "seed": 26062026,
     "simulations": 50000,
     "primary_outcome": "home",
     "probabilities": {
-      "home_win": 80.37,
-      "draw": 11.32,
-      "away_win": 8.31
+      "home_win": 79.49,
+      "draw": 11.62,
+      "away_win": 8.89
     },
     "most_likely_score": "2-0",
     "score_distribution": [
       {
         "score": "2-0",
-        "probability": 10.76
+        "probability": 10.61
       },
       {
         "score": "2-1",
-        "probability": 9.43
+        "probability": 9.4
       },
       {
         "score": "1-0",
-        "probability": 8.65
-      },
-      {
-        "score": "3-0",
-        "probability": 8.38
+        "probability": 8.64
       },
       {
         "score": "1-1",
-        "probability": 8.18
+        "probability": 8.25
+      },
+      {
+        "score": "3-0",
+        "probability": 8.19
       },
       {
         "score": "3-1",
-        "probability": 7.55
+        "probability": 7.61
       },
       {
         "score": "4-0",
-        "probability": 4.85
+        "probability": 4.76
       },
       {
         "score": "2-2",
-        "probability": 4.44
+        "probability": 4.55
       }
     ],
-    "expected_goals_home": 2.37,
-    "expected_goals_away": 0.914,
+    "expected_goals_home": 2.35,
+    "expected_goals_away": 0.929,
     "confidence": "media",
     "confidence_note": "Estimación fuerte dentro del modelo: combina xG, scouting, Monte Carlo, Markov, Bellman y Modelo B.",
     "uncertainty_interval": "+/- 8.05 pp",
-    "qualification_probability_home": 80.28,
-    "qualification_probability_away": 19.72,
-    "extra_time_probability": 17.97,
-    "penalties_probability": 7.62,
+    "qualification_probability_home": 78.87,
+    "qualification_probability_away": 21.13,
+    "extra_time_probability": 18.08,
+    "penalties_probability": 7.64,
     "factors": [
       {
         "name": "Elo y forma reciente",
@@ -1536,57 +1596,63 @@ export const staticPredictions: Record<string, any> = {
       },
       {
         "name": "Goles esperados/xG",
-        "impact": 8.74,
+        "impact": 8.53,
         "direction": "home",
         "evidence": "lambdas recalibradas con ataque, defensa y scouting reciente"
       },
       {
         "name": "Titulares disponibles",
-        "impact": 0.6,
+        "impact": 0.48,
         "direction": "home",
         "evidence": "proxy de disponibilidad y profundidad del once probable"
       },
       {
         "name": "Estabilidad tactica",
-        "impact": 2.94,
+        "impact": 2.54,
         "direction": "home",
         "evidence": "cohesion, presion, pelota parada, arquero y comparables historicos"
       },
       {
         "name": "Tendencia de empate",
-        "impact": -0.15,
-        "direction": "away",
+        "impact": 0.2,
+        "direction": "neutral",
         "evidence": "senal de partidos cerrados cuando ambos perfiles reducen brecha"
       },
       {
         "name": "Resiliencia ante favorito",
-        "impact": -0.72,
+        "impact": -1.28,
         "direction": "away",
         "evidence": "capacidad del equipo menos favorito para sostener duelos, presion y transiciones"
+      },
+      {
+        "name": "Auditoria postpartido",
+        "impact": -0.75,
+        "direction": "away",
+        "evidence": "aprendizaje del error reciente: favoritos en eliminatoria se penalizan ante bloque bajo, arquero y penales"
       }
     ],
     "model_components": [
       {
         "name": "Elo + forma",
-        "weight": 0.14,
+        "weight": 0.12,
         "status": "active",
         "note": "Mide diferencia estructural y momento competitivo."
       },
       {
         "name": "Scouting titulares/xG",
-        "weight": 0.24,
+        "weight": 0.23,
         "status": "active",
         "note": "Pondera once probable, disponibilidad, xG, arquero, presion y pelota parada."
       },
       {
         "name": "Poisson goles",
-        "weight": 0.22,
+        "weight": 0.2,
         "status": "active",
         "note": "Convierte ataque/defensa calibrados en goles esperados."
       },
       {
         "name": "Modelo B bayesiano",
-        "weight": 0.2,
+        "weight": 0.19,
         "status": "active",
         "note": "Ajusta incertidumbre, empates y sesgo de favorito con senales tacticas."
       },
@@ -1601,69 +1667,75 @@ export const staticPredictions: Record<string, any> = {
         "weight": 0.06,
         "status": "active",
         "note": "Valora estados del partido y escenarios de conservar/remontar."
+      },
+      {
+        "name": "Auditoria postpartido",
+        "weight": 0.06,
+        "status": "active",
+        "note": "Reduce sobreconfianza del favorito tras errores detectados en eliminatorias."
       }
     ],
-    "executive_summary": "Francia aparece como el escenario mas probable con una probabilidad calibrada demo de 80.37%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Francia se pondera plantel profundo, transiciones de elite y defensa de area superior; para Suecia, orden defensivo, juego aereo y tendencia a marcadores ajustados. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
+    "executive_summary": "Francia aparece como el escenario mas probable con una probabilidad calibrada demo de 79.49%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Francia se pondera plantel profundo, transiciones de elite y defensa de area superior; para Suecia, orden defensivo, juego aereo, arquero estable y tendencia a marcadores ajustados. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. La auditoria postpartido reduce sobreconfianza cuando aparecen bloque bajo, arquero, pelota parada y escenario de penales. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
     "disclaimer": "Sof-IA BO presenta una estimación probabilística construida con metodología matemática aplicada, modelos estadísticos y simulación computacional. El porcentaje final expresa la frecuencia con la que ese resultado aparece dentro de los escenarios calculados; cuando el valor es alto, indica mayor respaldo del modelo, aunque el fútbol conserva variabilidad natural e incertidumbre competitiva."
   },
   "r32-mex-ecu": {
-    "prediction_id": "78449aaa08e6cca1",
+    "prediction_id": "d6dc4d434e7c47a8",
     "match_id": "r32-mex-ecu",
-    "generated_at": "2026-06-28T16:09:18.868702-04:00",
-    "model_version": "demo-scouting-calibrado-0.3.0",
+    "generated_at": "2026-06-30T09:12:01.048184-04:00",
+    "model_version": "demo-audit-calibrado-0.4.0",
     "data_cutoff": "2026-06-28T10:30:00-04:00",
     "seed": 26062026,
     "simulations": 50000,
     "primary_outcome": "draw",
     "probabilities": {
-      "home_win": 30.68,
-      "draw": 36.07,
-      "away_win": 33.25
+      "home_win": 29.29,
+      "draw": 36.14,
+      "away_win": 34.57
     },
     "most_likely_score": "1-1",
     "score_distribution": [
       {
         "score": "1-1",
-        "probability": 11.6
+        "probability": 11.54
       },
       {
         "score": "2-1",
-        "probability": 8.72
-      },
-      {
-        "score": "1-0",
-        "probability": 8.26
+        "probability": 8.62
       },
       {
         "score": "1-2",
+        "probability": 8.23
+      },
+      {
+        "score": "1-0",
         "probability": 8.19
       },
       {
         "score": "0-1",
-        "probability": 7.59
-      },
-      {
-        "score": "2-0",
-        "probability": 6.13
+        "probability": 7.73
       },
       {
         "score": "2-2",
-        "probability": 5.97
+        "probability": 6.03
+      },
+      {
+        "score": "2-0",
+        "probability": 6.03
       },
       {
         "score": "0-0",
-        "probability": 5.6
+        "probability": 5.61
       }
     ],
-    "expected_goals_home": 1.492,
-    "expected_goals_away": 1.4,
+    "expected_goals_home": 1.479,
+    "expected_goals_away": 1.418,
     "confidence": "baja",
     "confidence_note": "Partido muy equilibrado: el modelo detecta señales divididas entre forma, xG, titulares y contexto táctico.",
     "uncertainty_interval": "+/- 8.05 pp",
-    "qualification_probability_home": 51.47,
-    "qualification_probability_away": 48.53,
+    "qualification_probability_home": 50.36,
+    "qualification_probability_away": 49.64,
     "extra_time_probability": 24.73,
-    "penalties_probability": 10.46,
+    "penalties_probability": 10.52,
     "factors": [
       {
         "name": "Elo y forma reciente",
@@ -1673,57 +1745,63 @@ export const staticPredictions: Record<string, any> = {
       },
       {
         "name": "Goles esperados/xG",
-        "impact": 0.55,
+        "impact": 0.37,
         "direction": "home",
         "evidence": "lambdas recalibradas con ataque, defensa y scouting reciente"
       },
       {
         "name": "Titulares disponibles",
-        "impact": 0.0,
+        "impact": -0.12,
         "direction": "neutral",
         "evidence": "proxy de disponibilidad y profundidad del once probable"
       },
       {
         "name": "Estabilidad tactica",
-        "impact": -0.28,
+        "impact": -0.66,
         "direction": "away",
         "evidence": "cohesion, presion, pelota parada, arquero y comparables historicos"
       },
       {
         "name": "Tendencia de empate",
-        "impact": 0.5,
+        "impact": 0.9,
         "direction": "neutral",
         "evidence": "senal de partidos cerrados cuando ambos perfiles reducen brecha"
       },
       {
         "name": "Resiliencia ante favorito",
-        "impact": -0.08,
-        "direction": "neutral",
+        "impact": -0.64,
+        "direction": "away",
         "evidence": "capacidad del equipo menos favorito para sostener duelos, presion y transiciones"
+      },
+      {
+        "name": "Auditoria postpartido",
+        "impact": -0.63,
+        "direction": "away",
+        "evidence": "aprendizaje del error reciente: favoritos en eliminatoria se penalizan ante bloque bajo, arquero y penales"
       }
     ],
     "model_components": [
       {
         "name": "Elo + forma",
-        "weight": 0.14,
+        "weight": 0.12,
         "status": "active",
         "note": "Mide diferencia estructural y momento competitivo."
       },
       {
         "name": "Scouting titulares/xG",
-        "weight": 0.24,
+        "weight": 0.23,
         "status": "active",
         "note": "Pondera once probable, disponibilidad, xG, arquero, presion y pelota parada."
       },
       {
         "name": "Poisson goles",
-        "weight": 0.22,
+        "weight": 0.2,
         "status": "active",
         "note": "Convierte ataque/defensa calibrados en goles esperados."
       },
       {
         "name": "Modelo B bayesiano",
-        "weight": 0.2,
+        "weight": 0.19,
         "status": "active",
         "note": "Ajusta incertidumbre, empates y sesgo de favorito con senales tacticas."
       },
@@ -1738,16 +1816,22 @@ export const staticPredictions: Record<string, any> = {
         "weight": 0.06,
         "status": "active",
         "note": "Valora estados del partido y escenarios de conservar/remontar."
+      },
+      {
+        "name": "Auditoria postpartido",
+        "weight": 0.06,
+        "status": "active",
+        "note": "Reduce sobreconfianza del favorito tras errores detectados en eliminatorias."
       }
     ],
-    "executive_summary": "el empate aparece como el escenario mas probable con una probabilidad calibrada demo de 36.07%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para México se pondera localia regional, intensidad alta y empuje en tramos largos; para Ecuador, fortaleza fisica, presion y solidez para sostener ventajas cortas. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
+    "executive_summary": "el empate aparece como el escenario mas probable con una probabilidad calibrada demo de 36.14%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para México se pondera localia regional, intensidad alta y empuje en tramos largos; para Ecuador, fortaleza fisica, presion, bloque compacto y solidez para sostener ventajas cortas. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. La auditoria postpartido reduce sobreconfianza cuando aparecen bloque bajo, arquero, pelota parada y escenario de penales. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
     "disclaimer": "Sof-IA BO presenta una estimación probabilística construida con metodología matemática aplicada, modelos estadísticos y simulación computacional. El porcentaje final expresa la frecuencia con la que ese resultado aparece dentro de los escenarios calculados; cuando el valor es alto, indica mayor respaldo del modelo, aunque el fútbol conserva variabilidad natural e incertidumbre competitiva."
   },
   "r32-eng-cod": {
-    "prediction_id": "02b8888fda555327",
+    "prediction_id": "5af63c8e3de485d2",
     "match_id": "r32-eng-cod",
-    "generated_at": "2026-06-28T16:09:18.922215-04:00",
-    "model_version": "demo-scouting-calibrado-0.3.0",
+    "generated_at": "2026-06-30T09:12:01.104356-04:00",
+    "model_version": "demo-audit-calibrado-0.4.0",
     "data_cutoff": "2026-06-28T10:30:00-04:00",
     "seed": 26062026,
     "simulations": 50000,
@@ -1797,8 +1881,8 @@ export const staticPredictions: Record<string, any> = {
     "confidence": "media",
     "confidence_note": "Estimación fuerte dentro del modelo: combina xG, scouting, Monte Carlo, Markov, Bellman y Modelo B.",
     "uncertainty_interval": "+/- 8.05 pp",
-    "qualification_probability_home": 86.82,
-    "qualification_probability_away": 13.18,
+    "qualification_probability_home": 86.88,
+    "qualification_probability_away": 13.12,
     "extra_time_probability": 13.96,
     "penalties_probability": 5.89,
     "factors": [
@@ -1837,30 +1921,36 @@ export const staticPredictions: Record<string, any> = {
         "impact": -1.6,
         "direction": "away",
         "evidence": "capacidad del equipo menos favorito para sostener duelos, presion y transiciones"
+      },
+      {
+        "name": "Auditoria postpartido",
+        "impact": -0.16,
+        "direction": "away",
+        "evidence": "aprendizaje del error reciente: favoritos en eliminatoria se penalizan ante bloque bajo, arquero y penales"
       }
     ],
     "model_components": [
       {
         "name": "Elo + forma",
-        "weight": 0.14,
+        "weight": 0.12,
         "status": "active",
         "note": "Mide diferencia estructural y momento competitivo."
       },
       {
         "name": "Scouting titulares/xG",
-        "weight": 0.24,
+        "weight": 0.23,
         "status": "active",
         "note": "Pondera once probable, disponibilidad, xG, arquero, presion y pelota parada."
       },
       {
         "name": "Poisson goles",
-        "weight": 0.22,
+        "weight": 0.2,
         "status": "active",
         "note": "Convierte ataque/defensa calibrados en goles esperados."
       },
       {
         "name": "Modelo B bayesiano",
-        "weight": 0.2,
+        "weight": 0.19,
         "status": "active",
         "note": "Ajusta incertidumbre, empates y sesgo de favorito con senales tacticas."
       },
@@ -1875,16 +1965,22 @@ export const staticPredictions: Record<string, any> = {
         "weight": 0.06,
         "status": "active",
         "note": "Valora estados del partido y escenarios de conservar/remontar."
+      },
+      {
+        "name": "Auditoria postpartido",
+        "weight": 0.06,
+        "status": "active",
+        "note": "Reduce sobreconfianza del favorito tras errores detectados en eliminatorias."
       }
     ],
-    "executive_summary": "Inglaterra aparece como el escenario mas probable con una probabilidad calibrada demo de 85.70%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Inglaterra se pondera plantel profundo, alta calidad de titulares y control territorial; para RD Congo, mejor senal de presion y duelos de lo que refleja el Elo base. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
+    "executive_summary": "Inglaterra aparece como el escenario mas probable con una probabilidad calibrada demo de 85.70%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Inglaterra se pondera plantel profundo, alta calidad de titulares y control territorial; para RD Congo, mejor senal de presion y duelos de lo que refleja el Elo base. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. La auditoria postpartido reduce sobreconfianza cuando aparecen bloque bajo, arquero, pelota parada y escenario de penales. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
     "disclaimer": "Sof-IA BO presenta una estimación probabilística construida con metodología matemática aplicada, modelos estadísticos y simulación computacional. El porcentaje final expresa la frecuencia con la que ese resultado aparece dentro de los escenarios calculados; cuando el valor es alto, indica mayor respaldo del modelo, aunque el fútbol conserva variabilidad natural e incertidumbre competitiva."
   },
   "r32-bel-sen": {
-    "prediction_id": "6bd4f6c4106c885e",
+    "prediction_id": "19318256566eb62f",
     "match_id": "r32-bel-sen",
-    "generated_at": "2026-06-28T16:09:18.976490-04:00",
-    "model_version": "demo-scouting-calibrado-0.3.0",
+    "generated_at": "2026-06-30T09:12:01.162408-04:00",
+    "model_version": "demo-audit-calibrado-0.4.0",
     "data_cutoff": "2026-06-28T10:30:00-04:00",
     "seed": 26062026,
     "simulations": 50000,
@@ -1934,8 +2030,8 @@ export const staticPredictions: Record<string, any> = {
     "confidence": "media",
     "confidence_note": "Estimación competitiva con respaldo metodológico; el margen se mantiene abierto por la variabilidad natural del fútbol.",
     "uncertainty_interval": "+/- 8.05 pp",
-    "qualification_probability_home": 64.89,
-    "qualification_probability_away": 35.11,
+    "qualification_probability_home": 63.96,
+    "qualification_probability_away": 36.04,
     "extra_time_probability": 23.14,
     "penalties_probability": 9.64,
     "factors": [
@@ -1974,30 +2070,36 @@ export const staticPredictions: Record<string, any> = {
         "impact": -1.04,
         "direction": "away",
         "evidence": "capacidad del equipo menos favorito para sostener duelos, presion y transiciones"
+      },
+      {
+        "name": "Auditoria postpartido",
+        "impact": -0.53,
+        "direction": "away",
+        "evidence": "aprendizaje del error reciente: favoritos en eliminatoria se penalizan ante bloque bajo, arquero y penales"
       }
     ],
     "model_components": [
       {
         "name": "Elo + forma",
-        "weight": 0.14,
+        "weight": 0.12,
         "status": "active",
         "note": "Mide diferencia estructural y momento competitivo."
       },
       {
         "name": "Scouting titulares/xG",
-        "weight": 0.24,
+        "weight": 0.23,
         "status": "active",
         "note": "Pondera once probable, disponibilidad, xG, arquero, presion y pelota parada."
       },
       {
         "name": "Poisson goles",
-        "weight": 0.22,
+        "weight": 0.2,
         "status": "active",
         "note": "Convierte ataque/defensa calibrados en goles esperados."
       },
       {
         "name": "Modelo B bayesiano",
-        "weight": 0.2,
+        "weight": 0.19,
         "status": "active",
         "note": "Ajusta incertidumbre, empates y sesgo de favorito con senales tacticas."
       },
@@ -2012,16 +2114,22 @@ export const staticPredictions: Record<string, any> = {
         "weight": 0.06,
         "status": "active",
         "note": "Valora estados del partido y escenarios de conservar/remontar."
+      },
+      {
+        "name": "Auditoria postpartido",
+        "weight": 0.06,
+        "status": "active",
+        "note": "Reduce sobreconfianza del favorito tras errores detectados en eliminatorias."
       }
     ],
-    "executive_summary": "Bélgica aparece como el escenario mas probable con una probabilidad calibrada demo de 58.88%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Bélgica se pondera calidad tecnica alta, aunque con riesgo si el partido se vuelve fisico; para Senegal, bloque fuerte, transiciones rapidas y buena gestion defensiva. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
+    "executive_summary": "Bélgica aparece como el escenario mas probable con una probabilidad calibrada demo de 58.88%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Bélgica se pondera calidad tecnica alta, aunque con riesgo si el partido se vuelve fisico; para Senegal, bloque fuerte, transiciones rapidas y buena gestion defensiva. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. La auditoria postpartido reduce sobreconfianza cuando aparecen bloque bajo, arquero, pelota parada y escenario de penales. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
     "disclaimer": "Sof-IA BO presenta una estimación probabilística construida con metodología matemática aplicada, modelos estadísticos y simulación computacional. El porcentaje final expresa la frecuencia con la que ese resultado aparece dentro de los escenarios calculados; cuando el valor es alto, indica mayor respaldo del modelo, aunque el fútbol conserva variabilidad natural e incertidumbre competitiva."
   },
   "r32-usa-bih": {
-    "prediction_id": "4a19a695690360a3",
+    "prediction_id": "5b65c742287958a0",
     "match_id": "r32-usa-bih",
-    "generated_at": "2026-06-28T16:09:19.030388-04:00",
-    "model_version": "demo-scouting-calibrado-0.3.0",
+    "generated_at": "2026-06-30T09:12:01.220608-04:00",
+    "model_version": "demo-audit-calibrado-0.4.0",
     "data_cutoff": "2026-06-28T10:30:00-04:00",
     "seed": 26062026,
     "simulations": 50000,
@@ -2111,30 +2219,36 @@ export const staticPredictions: Record<string, any> = {
         "impact": 0.4,
         "direction": "home",
         "evidence": "capacidad del equipo menos favorito para sostener duelos, presion y transiciones"
+      },
+      {
+        "name": "Auditoria postpartido",
+        "impact": 0.24,
+        "direction": "home",
+        "evidence": "aprendizaje del error reciente: favoritos en eliminatoria se penalizan ante bloque bajo, arquero y penales"
       }
     ],
     "model_components": [
       {
         "name": "Elo + forma",
-        "weight": 0.14,
+        "weight": 0.12,
         "status": "active",
         "note": "Mide diferencia estructural y momento competitivo."
       },
       {
         "name": "Scouting titulares/xG",
-        "weight": 0.24,
+        "weight": 0.23,
         "status": "active",
         "note": "Pondera once probable, disponibilidad, xG, arquero, presion y pelota parada."
       },
       {
         "name": "Poisson goles",
-        "weight": 0.22,
+        "weight": 0.2,
         "status": "active",
         "note": "Convierte ataque/defensa calibrados en goles esperados."
       },
       {
         "name": "Modelo B bayesiano",
-        "weight": 0.2,
+        "weight": 0.19,
         "status": "active",
         "note": "Ajusta incertidumbre, empates y sesgo de favorito con senales tacticas."
       },
@@ -2149,16 +2263,22 @@ export const staticPredictions: Record<string, any> = {
         "weight": 0.06,
         "status": "active",
         "note": "Valora estados del partido y escenarios de conservar/remontar."
+      },
+      {
+        "name": "Auditoria postpartido",
+        "weight": 0.06,
+        "status": "active",
+        "note": "Reduce sobreconfianza del favorito tras errores detectados en eliminatorias."
       }
     ],
-    "executive_summary": "Estados Unidos aparece como el escenario mas probable con una probabilidad calibrada demo de 66.19%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Estados Unidos se pondera ritmo alto, localia emocional y presion tras perdida; para Bosnia y Herzegovina, buen pie en ataque, pero menor estabilidad defensiva. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
+    "executive_summary": "Estados Unidos aparece como el escenario mas probable con una probabilidad calibrada demo de 66.19%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Estados Unidos se pondera ritmo alto, localia emocional y presion tras perdida; para Bosnia y Herzegovina, buen pie en ataque, pero menor estabilidad defensiva. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. La auditoria postpartido reduce sobreconfianza cuando aparecen bloque bajo, arquero, pelota parada y escenario de penales. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
     "disclaimer": "Sof-IA BO presenta una estimación probabilística construida con metodología matemática aplicada, modelos estadísticos y simulación computacional. El porcentaje final expresa la frecuencia con la que ese resultado aparece dentro de los escenarios calculados; cuando el valor es alto, indica mayor respaldo del modelo, aunque el fútbol conserva variabilidad natural e incertidumbre competitiva."
   },
   "r32-esp-aut": {
-    "prediction_id": "92f127b3f13ddedb",
+    "prediction_id": "f52cf8647d7666d1",
     "match_id": "r32-esp-aut",
-    "generated_at": "2026-06-28T16:09:19.084360-04:00",
-    "model_version": "demo-scouting-calibrado-0.3.0",
+    "generated_at": "2026-06-30T09:12:01.277737-04:00",
+    "model_version": "demo-audit-calibrado-0.4.0",
     "data_cutoff": "2026-06-28T10:30:00-04:00",
     "seed": 26062026,
     "simulations": 50000,
@@ -2208,8 +2328,8 @@ export const staticPredictions: Record<string, any> = {
     "confidence": "media",
     "confidence_note": "Estimación fuerte dentro del modelo: combina xG, scouting, Monte Carlo, Markov, Bellman y Modelo B.",
     "uncertainty_interval": "+/- 8.05 pp",
-    "qualification_probability_home": 75.85,
-    "qualification_probability_away": 24.15,
+    "qualification_probability_home": 75.54,
+    "qualification_probability_away": 24.46,
     "extra_time_probability": 19.51,
     "penalties_probability": 8.28,
     "factors": [
@@ -2248,30 +2368,36 @@ export const staticPredictions: Record<string, any> = {
         "impact": -0.16,
         "direction": "away",
         "evidence": "capacidad del equipo menos favorito para sostener duelos, presion y transiciones"
+      },
+      {
+        "name": "Auditoria postpartido",
+        "impact": 0.04,
+        "direction": "neutral",
+        "evidence": "aprendizaje del error reciente: favoritos en eliminatoria se penalizan ante bloque bajo, arquero y penales"
       }
     ],
     "model_components": [
       {
         "name": "Elo + forma",
-        "weight": 0.14,
+        "weight": 0.12,
         "status": "active",
         "note": "Mide diferencia estructural y momento competitivo."
       },
       {
         "name": "Scouting titulares/xG",
-        "weight": 0.24,
+        "weight": 0.23,
         "status": "active",
         "note": "Pondera once probable, disponibilidad, xG, arquero, presion y pelota parada."
       },
       {
         "name": "Poisson goles",
-        "weight": 0.22,
+        "weight": 0.2,
         "status": "active",
         "note": "Convierte ataque/defensa calibrados en goles esperados."
       },
       {
         "name": "Modelo B bayesiano",
-        "weight": 0.2,
+        "weight": 0.19,
         "status": "active",
         "note": "Ajusta incertidumbre, empates y sesgo de favorito con senales tacticas."
       },
@@ -2286,16 +2412,22 @@ export const staticPredictions: Record<string, any> = {
         "weight": 0.06,
         "status": "active",
         "note": "Valora estados del partido y escenarios de conservar/remontar."
+      },
+      {
+        "name": "Auditoria postpartido",
+        "weight": 0.06,
+        "status": "active",
+        "note": "Reduce sobreconfianza del favorito tras errores detectados en eliminatorias."
       }
     ],
-    "executive_summary": "España aparece como el escenario mas probable con una probabilidad calibrada demo de 75.97%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para España se pondera control de posesion, presion alta y muy baja concesion de xG; para Austria, presion coordinada y estructura estable, con riesgo si el partido se abre. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
+    "executive_summary": "España aparece como el escenario mas probable con una probabilidad calibrada demo de 75.97%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para España se pondera control de posesion, presion alta y muy baja concesion de xG; para Austria, presion coordinada y estructura estable, con riesgo si el partido se abre. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. La auditoria postpartido reduce sobreconfianza cuando aparecen bloque bajo, arquero, pelota parada y escenario de penales. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
     "disclaimer": "Sof-IA BO presenta una estimación probabilística construida con metodología matemática aplicada, modelos estadísticos y simulación computacional. El porcentaje final expresa la frecuencia con la que ese resultado aparece dentro de los escenarios calculados; cuando el valor es alto, indica mayor respaldo del modelo, aunque el fútbol conserva variabilidad natural e incertidumbre competitiva."
   },
   "r32-por-cro": {
-    "prediction_id": "859284c09b969782",
+    "prediction_id": "9f0630462cdedfac",
     "match_id": "r32-por-cro",
-    "generated_at": "2026-06-28T16:09:19.138290-04:00",
-    "model_version": "demo-scouting-calibrado-0.3.0",
+    "generated_at": "2026-06-30T09:12:01.335587-04:00",
+    "model_version": "demo-audit-calibrado-0.4.0",
     "data_cutoff": "2026-06-28T10:30:00-04:00",
     "seed": 26062026,
     "simulations": 50000,
@@ -2345,8 +2477,8 @@ export const staticPredictions: Record<string, any> = {
     "confidence": "media",
     "confidence_note": "Estimación fuerte dentro del modelo: combina xG, scouting, Monte Carlo, Markov, Bellman y Modelo B.",
     "uncertainty_interval": "+/- 8.05 pp",
-    "qualification_probability_home": 69.9,
-    "qualification_probability_away": 30.1,
+    "qualification_probability_home": 69.41,
+    "qualification_probability_away": 30.59,
     "extra_time_probability": 21.72,
     "penalties_probability": 9.15,
     "factors": [
@@ -2385,30 +2517,36 @@ export const staticPredictions: Record<string, any> = {
         "impact": -0.16,
         "direction": "away",
         "evidence": "capacidad del equipo menos favorito para sostener duelos, presion y transiciones"
+      },
+      {
+        "name": "Auditoria postpartido",
+        "impact": -0.04,
+        "direction": "neutral",
+        "evidence": "aprendizaje del error reciente: favoritos en eliminatoria se penalizan ante bloque bajo, arquero y penales"
       }
     ],
     "model_components": [
       {
         "name": "Elo + forma",
-        "weight": 0.14,
+        "weight": 0.12,
         "status": "active",
         "note": "Mide diferencia estructural y momento competitivo."
       },
       {
         "name": "Scouting titulares/xG",
-        "weight": 0.24,
+        "weight": 0.23,
         "status": "active",
         "note": "Pondera once probable, disponibilidad, xG, arquero, presion y pelota parada."
       },
       {
         "name": "Poisson goles",
-        "weight": 0.22,
+        "weight": 0.2,
         "status": "active",
         "note": "Convierte ataque/defensa calibrados en goles esperados."
       },
       {
         "name": "Modelo B bayesiano",
-        "weight": 0.2,
+        "weight": 0.19,
         "status": "active",
         "note": "Ajusta incertidumbre, empates y sesgo de favorito con senales tacticas."
       },
@@ -2423,16 +2561,22 @@ export const staticPredictions: Record<string, any> = {
         "weight": 0.06,
         "status": "active",
         "note": "Valora estados del partido y escenarios de conservar/remontar."
+      },
+      {
+        "name": "Auditoria postpartido",
+        "weight": 0.06,
+        "status": "active",
+        "note": "Reduce sobreconfianza del favorito tras errores detectados en eliminatorias."
       }
     ],
-    "executive_summary": "Portugal aparece como el escenario mas probable con una probabilidad calibrada demo de 68.82%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Portugal se pondera talento ofensivo alto, pero sensibilidad a partidos trabados; para Croacia, mediocampo estable, gestion de ritmo y experiencia competitiva. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
+    "executive_summary": "Portugal aparece como el escenario mas probable con una probabilidad calibrada demo de 68.82%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Portugal se pondera talento ofensivo alto, pero sensibilidad a partidos trabados; para Croacia, mediocampo estable, gestion de ritmo y experiencia competitiva. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. La auditoria postpartido reduce sobreconfianza cuando aparecen bloque bajo, arquero, pelota parada y escenario de penales. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
     "disclaimer": "Sof-IA BO presenta una estimación probabilística construida con metodología matemática aplicada, modelos estadísticos y simulación computacional. El porcentaje final expresa la frecuencia con la que ese resultado aparece dentro de los escenarios calculados; cuando el valor es alto, indica mayor respaldo del modelo, aunque el fútbol conserva variabilidad natural e incertidumbre competitiva."
   },
   "r32-sui-alg": {
-    "prediction_id": "5864fe586e5b7eef",
+    "prediction_id": "0a23f8c80aa706ca",
     "match_id": "r32-sui-alg",
-    "generated_at": "2026-06-28T16:09:19.192010-04:00",
-    "model_version": "demo-scouting-calibrado-0.3.0",
+    "generated_at": "2026-06-30T09:12:01.394898-04:00",
+    "model_version": "demo-audit-calibrado-0.4.0",
     "data_cutoff": "2026-06-28T10:30:00-04:00",
     "seed": 26062026,
     "simulations": 50000,
@@ -2482,8 +2626,8 @@ export const staticPredictions: Record<string, any> = {
     "confidence": "media",
     "confidence_note": "Estimación competitiva con respaldo metodológico; el margen se mantiene abierto por la variabilidad natural del fútbol.",
     "uncertainty_interval": "+/- 8.05 pp",
-    "qualification_probability_home": 63.88,
-    "qualification_probability_away": 36.12,
+    "qualification_probability_home": 63.87,
+    "qualification_probability_away": 36.13,
     "extra_time_probability": 24.0,
     "penalties_probability": 10.04,
     "factors": [
@@ -2522,30 +2666,36 @@ export const staticPredictions: Record<string, any> = {
         "impact": -0.24,
         "direction": "away",
         "evidence": "capacidad del equipo menos favorito para sostener duelos, presion y transiciones"
+      },
+      {
+        "name": "Auditoria postpartido",
+        "impact": 0.26,
+        "direction": "home",
+        "evidence": "aprendizaje del error reciente: favoritos en eliminatoria se penalizan ante bloque bajo, arquero y penales"
       }
     ],
     "model_components": [
       {
         "name": "Elo + forma",
-        "weight": 0.14,
+        "weight": 0.12,
         "status": "active",
         "note": "Mide diferencia estructural y momento competitivo."
       },
       {
         "name": "Scouting titulares/xG",
-        "weight": 0.24,
+        "weight": 0.23,
         "status": "active",
         "note": "Pondera once probable, disponibilidad, xG, arquero, presion y pelota parada."
       },
       {
         "name": "Poisson goles",
-        "weight": 0.22,
+        "weight": 0.2,
         "status": "active",
         "note": "Convierte ataque/defensa calibrados en goles esperados."
       },
       {
         "name": "Modelo B bayesiano",
-        "weight": 0.2,
+        "weight": 0.19,
         "status": "active",
         "note": "Ajusta incertidumbre, empates y sesgo de favorito con senales tacticas."
       },
@@ -2560,16 +2710,22 @@ export const staticPredictions: Record<string, any> = {
         "weight": 0.06,
         "status": "active",
         "note": "Valora estados del partido y escenarios de conservar/remontar."
+      },
+      {
+        "name": "Auditoria postpartido",
+        "weight": 0.06,
+        "status": "active",
+        "note": "Reduce sobreconfianza del favorito tras errores detectados en eliminatorias."
       }
     ],
-    "executive_summary": "Suiza aparece como el escenario mas probable con una probabilidad calibrada demo de 58.04%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Suiza se pondera estructura madura, defensa ordenada y cruces de baja varianza; para Argelia, ataque vertical y pelota parada con capacidad de romper pronosticos. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
+    "executive_summary": "Suiza aparece como el escenario mas probable con una probabilidad calibrada demo de 58.04%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Suiza se pondera estructura madura, defensa ordenada y cruces de baja varianza; para Argelia, ataque vertical y pelota parada con capacidad de romper pronosticos. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. La auditoria postpartido reduce sobreconfianza cuando aparecen bloque bajo, arquero, pelota parada y escenario de penales. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
     "disclaimer": "Sof-IA BO presenta una estimación probabilística construida con metodología matemática aplicada, modelos estadísticos y simulación computacional. El porcentaje final expresa la frecuencia con la que ese resultado aparece dentro de los escenarios calculados; cuando el valor es alto, indica mayor respaldo del modelo, aunque el fútbol conserva variabilidad natural e incertidumbre competitiva."
   },
   "r32-aus-egy": {
-    "prediction_id": "1e6e520bbba6866b",
+    "prediction_id": "e11fad2b65b05d4f",
     "match_id": "r32-aus-egy",
-    "generated_at": "2026-06-28T16:09:19.246325-04:00",
-    "model_version": "demo-scouting-calibrado-0.3.0",
+    "generated_at": "2026-06-30T09:12:01.454830-04:00",
+    "model_version": "demo-audit-calibrado-0.4.0",
     "data_cutoff": "2026-06-28T10:30:00-04:00",
     "seed": 26062026,
     "simulations": 50000,
@@ -2619,8 +2775,8 @@ export const staticPredictions: Record<string, any> = {
     "confidence": "baja",
     "confidence_note": "Partido muy equilibrado: el modelo detecta señales divididas entre forma, xG, titulares y contexto táctico.",
     "uncertainty_interval": "+/- 8.05 pp",
-    "qualification_probability_home": 51.89,
-    "qualification_probability_away": 48.11,
+    "qualification_probability_home": 52.14,
+    "qualification_probability_away": 47.86,
     "extra_time_probability": 25.72,
     "penalties_probability": 10.92,
     "factors": [
@@ -2659,30 +2815,36 @@ export const staticPredictions: Record<string, any> = {
         "impact": 0.32,
         "direction": "home",
         "evidence": "capacidad del equipo menos favorito para sostener duelos, presion y transiciones"
+      },
+      {
+        "name": "Auditoria postpartido",
+        "impact": 0.1,
+        "direction": "neutral",
+        "evidence": "aprendizaje del error reciente: favoritos en eliminatoria se penalizan ante bloque bajo, arquero y penales"
       }
     ],
     "model_components": [
       {
         "name": "Elo + forma",
-        "weight": 0.14,
+        "weight": 0.12,
         "status": "active",
         "note": "Mide diferencia estructural y momento competitivo."
       },
       {
         "name": "Scouting titulares/xG",
-        "weight": 0.24,
+        "weight": 0.23,
         "status": "active",
         "note": "Pondera once probable, disponibilidad, xG, arquero, presion y pelota parada."
       },
       {
         "name": "Poisson goles",
-        "weight": 0.22,
+        "weight": 0.2,
         "status": "active",
         "note": "Convierte ataque/defensa calibrados en goles esperados."
       },
       {
         "name": "Modelo B bayesiano",
-        "weight": 0.2,
+        "weight": 0.19,
         "status": "active",
         "note": "Ajusta incertidumbre, empates y sesgo de favorito con senales tacticas."
       },
@@ -2697,16 +2859,22 @@ export const staticPredictions: Record<string, any> = {
         "weight": 0.06,
         "status": "active",
         "note": "Valora estados del partido y escenarios de conservar/remontar."
+      },
+      {
+        "name": "Auditoria postpartido",
+        "weight": 0.06,
+        "status": "active",
+        "note": "Reduce sobreconfianza del favorito tras errores detectados en eliminatorias."
       }
     ],
-    "executive_summary": "el empate aparece como el escenario mas probable con una probabilidad calibrada demo de 38.00%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Australia se pondera orden fisico, juego directo y fortaleza en pelota parada; para Egipto, ataque vertical, experiencia competitiva y duelos cerrados. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
+    "executive_summary": "el empate aparece como el escenario mas probable con una probabilidad calibrada demo de 38.00%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Australia se pondera orden fisico, juego directo y fortaleza en pelota parada; para Egipto, ataque vertical, experiencia competitiva y duelos cerrados. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. La auditoria postpartido reduce sobreconfianza cuando aparecen bloque bajo, arquero, pelota parada y escenario de penales. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
     "disclaimer": "Sof-IA BO presenta una estimación probabilística construida con metodología matemática aplicada, modelos estadísticos y simulación computacional. El porcentaje final expresa la frecuencia con la que ese resultado aparece dentro de los escenarios calculados; cuando el valor es alto, indica mayor respaldo del modelo, aunque el fútbol conserva variabilidad natural e incertidumbre competitiva."
   },
   "r32-arg-cpv": {
-    "prediction_id": "011299c05ec16553",
+    "prediction_id": "47116f081bd27171",
     "match_id": "r32-arg-cpv",
-    "generated_at": "2026-06-28T16:09:19.299081-04:00",
-    "model_version": "demo-scouting-calibrado-0.3.0",
+    "generated_at": "2026-06-30T09:12:01.511006-04:00",
+    "model_version": "demo-audit-calibrado-0.4.0",
     "data_cutoff": "2026-06-28T10:30:00-04:00",
     "seed": 26062026,
     "simulations": 50000,
@@ -2756,8 +2924,8 @@ export const staticPredictions: Record<string, any> = {
     "confidence": "media",
     "confidence_note": "Estimación fuerte dentro del modelo: combina xG, scouting, Monte Carlo, Markov, Bellman y Modelo B.",
     "uncertainty_interval": "+/- 8.05 pp",
-    "qualification_probability_home": 93.03,
-    "qualification_probability_away": 6.97,
+    "qualification_probability_home": 93.51,
+    "qualification_probability_away": 6.49,
     "extra_time_probability": 8.51,
     "penalties_probability": 3.59,
     "factors": [
@@ -2796,30 +2964,36 @@ export const staticPredictions: Record<string, any> = {
         "impact": -0.48,
         "direction": "away",
         "evidence": "capacidad del equipo menos favorito para sostener duelos, presion y transiciones"
+      },
+      {
+        "name": "Auditoria postpartido",
+        "impact": 0.44,
+        "direction": "home",
+        "evidence": "aprendizaje del error reciente: favoritos en eliminatoria se penalizan ante bloque bajo, arquero y penales"
       }
     ],
     "model_components": [
       {
         "name": "Elo + forma",
-        "weight": 0.14,
+        "weight": 0.12,
         "status": "active",
         "note": "Mide diferencia estructural y momento competitivo."
       },
       {
         "name": "Scouting titulares/xG",
-        "weight": 0.24,
+        "weight": 0.23,
         "status": "active",
         "note": "Pondera once probable, disponibilidad, xG, arquero, presion y pelota parada."
       },
       {
         "name": "Poisson goles",
-        "weight": 0.22,
+        "weight": 0.2,
         "status": "active",
         "note": "Convierte ataque/defensa calibrados en goles esperados."
       },
       {
         "name": "Modelo B bayesiano",
-        "weight": 0.2,
+        "weight": 0.19,
         "status": "active",
         "note": "Ajusta incertidumbre, empates y sesgo de favorito con senales tacticas."
       },
@@ -2834,16 +3008,22 @@ export const staticPredictions: Record<string, any> = {
         "weight": 0.06,
         "status": "active",
         "note": "Valora estados del partido y escenarios de conservar/remontar."
+      },
+      {
+        "name": "Auditoria postpartido",
+        "weight": 0.06,
+        "status": "active",
+        "note": "Reduce sobreconfianza del favorito tras errores detectados en eliminatorias."
       }
     ],
-    "executive_summary": "Argentina aparece como el escenario mas probable con una probabilidad calibrada demo de 92.52%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Argentina se pondera elite en generacion, control de ventajas y profundidad de titulares; para Cabo Verde, bloque bajo, transiciones aisladas y alta exigencia defensiva. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
+    "executive_summary": "Argentina aparece como el escenario mas probable con una probabilidad calibrada demo de 92.52%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Argentina se pondera elite en generacion, control de ventajas y profundidad de titulares; para Cabo Verde, bloque bajo, transiciones aisladas y alta exigencia defensiva. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. La auditoria postpartido reduce sobreconfianza cuando aparecen bloque bajo, arquero, pelota parada y escenario de penales. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
     "disclaimer": "Sof-IA BO presenta una estimación probabilística construida con metodología matemática aplicada, modelos estadísticos y simulación computacional. El porcentaje final expresa la frecuencia con la que ese resultado aparece dentro de los escenarios calculados; cuando el valor es alto, indica mayor respaldo del modelo, aunque el fútbol conserva variabilidad natural e incertidumbre competitiva."
   },
   "r32-col-gha": {
-    "prediction_id": "a664aac7a690e468",
+    "prediction_id": "d9c5b687ea006903",
     "match_id": "r32-col-gha",
-    "generated_at": "2026-06-28T16:09:19.352557-04:00",
-    "model_version": "demo-scouting-calibrado-0.3.0",
+    "generated_at": "2026-06-30T09:12:01.569308-04:00",
+    "model_version": "demo-audit-calibrado-0.4.0",
     "data_cutoff": "2026-06-28T10:30:00-04:00",
     "seed": 26062026,
     "simulations": 50000,
@@ -2893,8 +3073,8 @@ export const staticPredictions: Record<string, any> = {
     "confidence": "media",
     "confidence_note": "Estimación fuerte dentro del modelo: combina xG, scouting, Monte Carlo, Markov, Bellman y Modelo B.",
     "uncertainty_interval": "+/- 8.05 pp",
-    "qualification_probability_home": 78.87,
-    "qualification_probability_away": 21.13,
+    "qualification_probability_home": 78.76,
+    "qualification_probability_away": 21.24,
     "extra_time_probability": 18.9,
     "penalties_probability": 7.91,
     "factors": [
@@ -2933,30 +3113,36 @@ export const staticPredictions: Record<string, any> = {
         "impact": 0.08,
         "direction": "neutral",
         "evidence": "capacidad del equipo menos favorito para sostener duelos, presion y transiciones"
+      },
+      {
+        "name": "Auditoria postpartido",
+        "impact": 0.68,
+        "direction": "home",
+        "evidence": "aprendizaje del error reciente: favoritos en eliminatoria se penalizan ante bloque bajo, arquero y penales"
       }
     ],
     "model_components": [
       {
         "name": "Elo + forma",
-        "weight": 0.14,
+        "weight": 0.12,
         "status": "active",
         "note": "Mide diferencia estructural y momento competitivo."
       },
       {
         "name": "Scouting titulares/xG",
-        "weight": 0.24,
+        "weight": 0.23,
         "status": "active",
         "note": "Pondera once probable, disponibilidad, xG, arquero, presion y pelota parada."
       },
       {
         "name": "Poisson goles",
-        "weight": 0.22,
+        "weight": 0.2,
         "status": "active",
         "note": "Convierte ataque/defensa calibrados en goles esperados."
       },
       {
         "name": "Modelo B bayesiano",
-        "weight": 0.2,
+        "weight": 0.19,
         "status": "active",
         "note": "Ajusta incertidumbre, empates y sesgo de favorito con senales tacticas."
       },
@@ -2971,9 +3157,15 @@ export const staticPredictions: Record<string, any> = {
         "weight": 0.06,
         "status": "active",
         "note": "Valora estados del partido y escenarios de conservar/remontar."
+      },
+      {
+        "name": "Auditoria postpartido",
+        "weight": 0.06,
+        "status": "active",
+        "note": "Reduce sobreconfianza del favorito tras errores detectados en eliminatorias."
       }
     ],
-    "executive_summary": "Colombia aparece como el escenario mas probable con una probabilidad calibrada demo de 79.06%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Colombia se pondera ataque asociativo, buen control emocional y tendencia a partidos cerrados; para Ghana, potencia fisica, amenaza en pelota parada y transiciones. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
+    "executive_summary": "Colombia aparece como el escenario mas probable con una probabilidad calibrada demo de 79.06%. La conclusion no sale de una sola formula: el motor cruza forma reciente, Elo, goles esperados, sede, perfil tactico, disponibilidad de titulares y estabilidad del once probable. Para Colombia se pondera ataque asociativo, buen control emocional y tendencia a partidos cerrados; para Ghana, potencia fisica, amenaza en pelota parada y transiciones. Poisson convierte ataque/defensa y xG en marcadores simulables; el Modelo B bayesiano usa esas senales como probabilidad previa y corrige sesgos cuando el favorito no tiene ventaja tactica estable. La auditoria postpartido reduce sobreconfianza cuando aparecen bloque bajo, arquero, pelota parada y escenario de penales. Markov representa estados del partido como dominio, marcador, riesgo y transiciones; Bellman estima el valor esperado de conservar, empatar o remontar segun esos estados. El grafo de conocimiento conecta seleccion, confederacion, sede, estilo, titulares, pelota parada y comparables historicos para explicar por que sube o baja cada probabilidad. Finalmente Monte Carlo ejecuta miles de escenarios reproducibles; el resultado final es el escenario que mas se repite despues de calibrar empates, sorpresas y coherencia del marcador probable.",
     "disclaimer": "Sof-IA BO presenta una estimación probabilística construida con metodología matemática aplicada, modelos estadísticos y simulación computacional. El porcentaje final expresa la frecuencia con la que ese resultado aparece dentro de los escenarios calculados; cuando el valor es alto, indica mayor respaldo del modelo, aunque el fútbol conserva variabilidad natural e incertidumbre competitiva."
   }
 };
